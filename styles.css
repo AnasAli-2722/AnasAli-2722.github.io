@@ -18,8 +18,8 @@
     --text-secondary: #64748b;
     --accent-color: #0284c7;
     --hover-shadow: rgba(2, 132, 199, 0.15);
-    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
-    --border-color: rgba(0, 0, 0, 0.15);
+    --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    --border-color: rgba(0, 0, 0, 0.2);
 }
 
 * {
