@@ -190,10 +190,13 @@ p {
     color: var(--accent-color);
 }
 
-.tech-item i {
+.tech-item i,
+.tech-item svg {
     font-size: 1.5rem;
     width: 30px;
+    height: 30px;
     text-align: center;
+    fill: currentColor;
 }
 
 /* Card 3: Project Spotlight */
