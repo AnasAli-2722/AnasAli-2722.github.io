@@ -1,5 +1,8 @@
 # Anas Ali | Portfolio
 
+![Portfolio Preview](assets/portfolio-preview.png)
+
+
 A modern, responsive portfolio website featuring a Bento Grid layout and dark/light mode support. Built to showcase my skills as a Flutter Developer and Creative Designer.
 
 ## 🌟 Features
@@ -31,6 +34,11 @@ This is a static website, so no complex build process is required.
 ## 🔗 Live Demo
 
 Check out the live version here: [https://anasali-2722.github.io/](https://anasali-2722.github.io/)
+
+---
+
+© 2025 Anas Ali. All Rights Reserved.
+b.io/)
 
 ---
 
