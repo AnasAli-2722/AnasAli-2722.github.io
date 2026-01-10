@@ -1,125 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Ali | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Anas | Creative Developer & Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-    <div class="theme-toggle-wrapper">
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-
-    <main class="bento-grid">
-        <!-- Card 1: Hero / Profile (Spans 2 cols, 2 rows) -->
-        <div class="card hero-card">
-            <div class="hero-content">
-                <div class="avatar-placeholder">
-                    <i class="fas fa-user"></i>
-                </div>
-                <h1>Anas Ali</h1>
-                <h2>CS Student & Flutter Developer</h2>
-                <p>Crafting beautiful cross-platform experiences with code.</p>
-                <a href="mailto:anas@example.com" class="btn-primary">Contact Me</a>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Layer 1: Background (implicit dark background) -->
+        
+        <!-- Layer 2: River Text Animation (Behind User) -->
+        <div class="river-container">
+            <svg class="river-svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <!-- Define the sine wave path -->
+                <path id="wavePath" d="M -200,400 Q 200,250 600,400 T 1400,400" fill="none" stroke="none"/>                </defs>
+                <!-- Animated text on path - First stream -->
+                <text class="river-text" font-family="Orbitron, sans-serif" font-size="80" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4">
+                    <textPath href="#wavePath" startOffset="0%">
+                        <animate attributeName="startOffset" from="0%" to="100%" dur="20s" repeatCount="indefinite"/>
+                        
+                    </textPath>
+                </text>
+                <!-- Second stream with offset for continuous effect -->
+                <text class="river-text" font-family="Orbitron, sans-serif" font-size="80" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3">
+                    <textPath href="#wavePath" startOffset="10%">
+                        <animate attributeName="startOffset" from="-100%" to="-10%" dur="25s" repeatCount="indefinite"/>
+                        CREATIVE DEV • AVAILABLE NOW • UET TAXILA • FREELANCE •
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+        
+        <!-- Layer 3: User Image (Center Front) -->
+        <div class="user-image-container">
+            <div class="user-image-placeholder">
+                <img src="assets/anas.png" alt="Anas" class="user-image">
             </div>
         </div>
-
-        <!-- Card 2: Location -->
-        <div class="card geo-card">
-            <div>
-                <div class="geo-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <h3>Based in Pakistan</h3>
-            </div>
-            <div class="time-display" id="local-time">
-                --:-- --
-            </div>
+        
+        <!-- Layer 4: Introduction Text (Front Overlay) -->
+        <div class="hero-intro">
+            <h1 class="intro-greeting">Hello, I am Anas</h1>
+            <p class="intro-typewriter">
+                <span class="prompt-symbol">&gt;</span> 
+                <span class="slash">/</span> 
+                <span id="typewriter" class="typewriter-text"></span>
+                <span class="cursor">▌</span>
+            </p>
         </div>
+    </section>
 
-        <!-- Card 3: Tech Stack (Vertical) -->
-        <div class="card tech-card">
-            <h3>Stack</h3>
-            <div class="tech-icons">
-                <div class="tech-item" title="Flutter">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path
-                            d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z" />
-                    </svg>
-                </div>
-                <div class="tech-item" title="Dart">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path
-                            d="M448 96c0-35.3-28.7-64-64-64H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96zM265.8 407.7c0-1.8-2.6-3.3-4.9-5.6L162.3 304l98.6-98.1c2.3-2.3 4.9-3.8 4.9-5.6v-51.1c0-2.3-2.6-4.6-4.9-6.1L133.8 270.6l-21 21.3 21 21.3 127.1 127.4c2.3-1.5 4.9-3.8 4.9-6.1V407.7zM291.3 198.9c1.8-2.3 3.3-4.9 5.6-4.9h51.1c2.3 0 4.6 2.6 6.1 4.9l-98.1 98.6-21.3 21.3-21.3-21.3 77.9-98.6z" />
-                    </svg>
-                </div>
-                <div class="tech-item" title="Firebase">
-                    <i class="fa-solid fa-fire"></i>
-                </div>
-                <div class="tech-item" title="HTML5">
-                    <i class="fa-brands fa-html5"></i>
-                </div>
-                <div class="tech-item" title="CSS3">
-                    <i class="fa-brands fa-css3-alt"></i>
-                </div>
-                <div class="tech-item" title="GitHub">
-                    <i class="fa-brands fa-github"></i>
+    <!-- Editorial Bento Grid -->
+    <section class="bento-grid" id="portfolio">
+        <!-- Item 1: Wide Banner Project -->
+        <article class="bento-item bento-item-1">
+            <div class="bento-content">
+                <h2>Anas Space</h2>
+                <p class="bento-subtitle">Desktop & Mobile Gallery App</p>
+                <p class="bento-description">A responsive photo gallery application with smooth animations and intuitive UI/UX design.</p>
+                <div class="bento-tags">
+                    <span class="tag">Flutter</span>
+                    <span class="tag">Responsive</span>
+                    <span class="tag">Gallery</span>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <!-- Card 4: Services -->
-        <div class="card services-card">
-            <h3>Services</h3>
-            <ul class="service-list">
-                <li>Mobile Apps</li>
-                <li>UI/UX Design</li>
-                <li>Web Dev</li>
-            </ul>
-        </div>
-
-        <!-- Card 5: Project Spotlight -->
-        <div class="card project-card">
-            <div class="project-content">
-                <div class="project-text">
-                    <h3>Project Spotlight</h3>
-                    <p>Flagship Flutter App</p>
-                    <span class="tag">Coming Soon</span>
-                </div>
-                <div class="project-visual">
-                    <i class="fas fa-laptop-code"></i>
+        <!-- Item 2: Tall Card Skills -->
+        <article class="bento-item bento-item-2">
+            <div class="bento-content">
+                <h3>CS Student @ UET Taxila</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <span class="skill-name">C++</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">DSA</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Algorithms</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 78%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 82%"></div></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <!-- Card 6: Connect -->
-        <div class="card connect-card">
-            <h3>Let's Connect</h3>
-            <div class="social-links">
-                <a href="https://github.com/AnasAli-2722" target="_blank" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="#" target="_blank" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="mailto:anas@example.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
+        <!-- Item 3: Freelance Services -->
+        <article class="bento-item bento-item-3">
+            <div class="bento-content">
+                <h3>Freelance Services</h3>
+                <ul class="services-list">
+                    <li>Flutter App Development</li>
+                    <li>n8n Automation</li>
+                    <li>UI/UX Design</li>
+                    <li>Web Development</li>
+                </ul>
+                <a href="#contact" class="cta-button">Get In Touch</a>
             </div>
+        </article>
+
+        <!-- Item 4: Tech Stack -->
+        <article class="bento-item bento-item-4">
+            <div class="bento-content">
+                <h3>Tech Stack</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" data-tech="Flutter">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50" y="60" text-anchor="middle" font-size="40" fill="currentColor">⚡</text>
+                        </svg>
+                        <span>Flutter</span>
+                    </div>
+                    <div class="tech-icon" data-tech="Firebase">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50" y="60" text-anchor="middle" font-size="40" fill="currentColor">🔥</text>
+                        </svg>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-icon" data-tech="C++">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50" y="60" text-anchor="middle" font-size="40" fill="currentColor">+</text>
+                        </svg>
+                        <span>C++</span>
+                    </div>
+                    <div class="tech-icon" data-tech="JavaScript">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <text x="50" y="60" text-anchor="middle" font-size="40" fill="currentColor">JS</text>
+                        </svg>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2>Let's Create Something</h2>
+        <p>Got a project in mind? Let's collaborate.</p>
+        <div class="contact-links">
+            <a href="mailto:contact@example.com" class="contact-link">Email</a>
+            <a href="#" class="contact-link">LinkedIn</a>
+            <a href="#" class="contact-link">GitHub</a>
+            <a href="#" class="contact-link">Twitter</a>
         </div>
-    </main>
+    </section>
+
+    <!-- Floating Navigation Dock -->
+    <nav class="nav-dock">
+        <a href="#hero" class="nav-dock-item" data-section="hero">Home</a>
+        <a href="#portfolio" class="nav-dock-item" data-section="portfolio">Portfolio</a>
+        <a href="#contact" class="nav-dock-item" data-section="contact">Contact</a>
+    </nav>
 
     <script src="script.js"></script>
 </body>
-
 </html>
