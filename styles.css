@@ -38,7 +38,6 @@ body {
     background: radial-gradient(circle at center, rgba(255, 0, 127, 0.05) 0%, var(--bg-color) 70%);
 }
 
-/* Layer 2: River Text Animation (z-index: 1) */
 .river-container {
     position: absolute;
     top: 0;
@@ -64,7 +63,6 @@ body {
     font-weight: 900;
 }
 
-/* Layer 3: User Image (z-index: 2) */
 .user-image-container {
     position: relative;
     z-index: 2;
@@ -98,7 +96,6 @@ body {
     filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.3));
 }
 
-/* Placeholder Avatar (Remove when you add real image) */
 .placeholder-avatar {
     width: 400px;
     height: 400px;
@@ -132,7 +129,6 @@ body {
     }
 }
 
-/* Layer 4: Introduction Text (z-index: 3) */
 .hero-intro {
     position: absolute;
     z-index: 3;
@@ -205,7 +201,6 @@ body {
     }
 }
 
-/* ===== BENTO GRID SECTION ===== */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -341,7 +336,6 @@ body {
     box-shadow: 0 0 15px var(--glow-color);
 }
 
-/* Skills List */
 .skills-list {
     display: flex;
     flex-direction: column;
