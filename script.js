@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     typewriter();
 });
 
-// Intersection Observer for Scroll Animations
 const observerOptions = {
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
@@ -54,13 +53,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all bento items
 document.addEventListener('DOMContentLoaded', () => {
     const bentoItems = document.querySelectorAll('.bento-item');
     bentoItems.forEach(item => observer.observe(item));
 });
 
-// Navigation Active State
 document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-dock-item');
     const sections = document.querySelectorAll('section[id]');
@@ -79,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => navObserver.observe(section));
 
-    // Smooth scroll navigation
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
@@ -92,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Tech Icon Floating Animation on Hover
 document.addEventListener('DOMContentLoaded', () => {
     const techIcons = document.querySelectorAll('.tech-icon');
     
@@ -107,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add floating animation
 const style = document.createElement('style');
 style.textContent = `
     @keyframes float {
@@ -121,7 +115,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Performance: Lazy load animations
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
         console.log('Portfolio fully optimized');
