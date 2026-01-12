@@ -1,12 +1,12 @@
 :root {
     --bg-color: #0a0a0a;
     --bg-secondary: #121212;
-    --primary-accent: #ff007f;
-    --secondary-accent: #00f3ff;
+    --primary-accent: #005eff;
+    --secondary-accent: #0037ff;
     --text-main: #ffffff;
     --text-muted: #888888;
     --border-color: #222222;
-    --glow-color: rgba(255, 0, 127, 0.3);
+    --glow-color: rgba(53, 181, 240, 0.37);
 }
 
 * {
@@ -376,7 +376,6 @@ body {
     box-shadow: 0 0 10px var(--glow-color);
 }
 
-/* Services List */
 .services-list {
     list-style: none;
     flex: 1;
@@ -407,7 +406,6 @@ body {
     padding-left: 25px;
 }
 
-/* CTA Button */
 .cta-button {
     align-self: flex-start;
     padding: 12px 24px;
@@ -431,7 +429,6 @@ body {
     box-shadow: 0 0 20px var(--glow-color);
 }
 
-/* Tech Stack Icons */
 .tech-icons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -481,7 +478,6 @@ body {
     color: var(--primary-accent);
 }
 
-/* ===== CONTACT SECTION ===== */
 .contact-section {
     padding: 80px 40px;
     text-align: center;
@@ -529,7 +525,6 @@ body {
     box-shadow: 0 0 30px var(--glow-color);
 }
 
-/* ===== FLOATING NAVIGATION DOCK ===== */
 .nav-dock {
     position: fixed;
     bottom: 40px;
@@ -567,7 +562,6 @@ body {
     box-shadow: 0 0 15px var(--glow-color);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
     .bento-grid {
         grid-template-columns: repeat(2, 1fr);

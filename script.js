@@ -1,4 +1,3 @@
-// Typewriter Effect for Hero
 const typewriterElement = document.getElementById('typewriter');
 const texts = [
     'developer',
@@ -36,7 +35,6 @@ function typewriter() {
     setTimeout(typewriter, speed);
 }
 
-// Initialize typewriter
 document.addEventListener('DOMContentLoaded', () => {
     typewriter();
 });
