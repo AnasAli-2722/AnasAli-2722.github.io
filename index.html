@@ -10,24 +10,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <!-- Layer 1: Background (implicit dark background) -->
         
-        <!-- Layer 2: River Text Animation (Behind User) -->
         <div class="river-container">
             <svg class="river-svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
                 <defs>
-                    <!-- Define the sine wave path -->
                 <path id="wavePath" d="M -200,400 Q 200,250 600,400 T 1400,400" fill="none" stroke="none"/>                </defs>
-                <!-- Animated text on path - First stream -->
                 <text class="river-text" font-family="Orbitron, sans-serif" font-size="80" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.4">
                     <textPath href="#wavePath" startOffset="0%">
                         <animate attributeName="startOffset" from="0%" to="100%" dur="20s" repeatCount="indefinite"/>
                         
                     </textPath>
                 </text>
-                <!-- Second stream with offset for continuous effect -->
                 <text class="river-text" font-family="Orbitron, sans-serif" font-size="80" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3">
                     <textPath href="#wavePath" startOffset="10%">
                         <animate attributeName="startOffset" from="-100%" to="-10%" dur="25s" repeatCount="indefinite"/>
@@ -37,14 +31,12 @@
             </svg>
         </div>
         
-        <!-- Layer 3: User Image (Center Front) -->
         <div class="user-image-container">
             <div class="user-image-placeholder">
                 <img src="assets/anas.png" alt="Anas" class="user-image">
             </div>
         </div>
         
-        <!-- Layer 4: Introduction Text (Front Overlay) -->
         <div class="hero-intro">
             <h1 class="intro-greeting">Hello, I am Anas</h1>
             <p class="intro-typewriter">
@@ -56,9 +48,7 @@
         </div>
     </section>
 
-    <!-- Editorial Bento Grid -->
     <section class="bento-grid" id="portfolio">
-        <!-- Item 1: Wide Banner Project -->
         <article class="bento-item bento-item-1">
             <div class="bento-content">
                 <h2>Anas Space</h2>
@@ -72,7 +62,6 @@
             </div>
         </article>
 
-        <!-- Item 2: Tall Card Skills -->
         <article class="bento-item bento-item-2">
             <div class="bento-content">
                 <h3>CS Student @ UET Taxila</h3>
@@ -97,7 +86,6 @@
             </div>
         </article>
 
-        <!-- Item 3: Freelance Services -->
         <article class="bento-item bento-item-3">
             <div class="bento-content">
                 <h3>Freelance Services</h3>
@@ -111,7 +99,6 @@
             </div>
         </article>
 
-        <!-- Item 4: Tech Stack -->
         <article class="bento-item bento-item-4">
             <div class="bento-content">
                 <h3>Tech Stack</h3>
@@ -145,7 +132,6 @@
         </article>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <h2>Let's Create Something</h2>
         <p>Got a project in mind? Let's collaborate.</p>
@@ -157,7 +143,6 @@
         </div>
     </section>
 
-    <!-- Floating Navigation Dock -->
     <nav class="nav-dock">
         <a href="#hero" class="nav-dock-item" data-section="hero">Home</a>
         <a href="#portfolio" class="nav-dock-item" data-section="portfolio">Portfolio</a>

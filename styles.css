@@ -27,7 +27,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== HERO SECTION ===== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -78,12 +77,25 @@ body {
     position: relative;
 }
 
+.user-image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 440px;
+    height: 440px;
+    background: #333;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 0 10px #222, 0 0 0 20px #111;
+    z-index: -1;
+    border-radius: 50%;
+}
+
 .user-image {
     width: 400px;
     height: 400px;
     object-fit: contain;
     filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.3));
-    animation: float-subtle 6s ease-in-out infinite;
 }
 
 /* Placeholder Avatar (Remove when you add real image) */
