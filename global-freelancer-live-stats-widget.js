@@ -170,17 +170,21 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
                 }
 
                 .contribution-grid {
+                    --commit-cell-size: 11px;
+                    --commit-gap: 3px;
                     display: grid;
-                    grid-template-columns: repeat(14, 8px);
-                    grid-auto-rows: 8px;
-                    gap: 2px;
-                    align-content: start;
-                    padding: 2px 0;
-                    min-height: 70px;
+                    grid-template-columns: repeat(14, var(--commit-cell-size));
+                    grid-auto-rows: var(--commit-cell-size);
+                    gap: var(--commit-gap);
+                    place-content: center;
+                    justify-content: center;
+                    width: 100%;
+                    padding: 6px 0;
+                    min-height: 98px;
                 }
 
                 .commit-cell {
-                    border-radius: 2px;
+                    border-radius: 3px;
                     background: var(--primary-accent);
                     transition: transform 0.2s ease, opacity 0.2s ease;
                 }
@@ -232,7 +236,9 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
 
                 @media (max-width: 1200px) {
                     .contribution-grid {
-                        grid-template-columns: repeat(12, 8px);
+                        --commit-cell-size: 10px;
+                        --commit-gap: 3px;
+                        grid-template-columns: repeat(12, var(--commit-cell-size));
                     }
                 }
 
@@ -246,7 +252,9 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
                     }
 
                     .contribution-grid {
-                        grid-template-columns: repeat(11, 8px);
+                        --commit-cell-size: 9px;
+                        --commit-gap: 3px;
+                        grid-template-columns: repeat(10, var(--commit-cell-size));
                     }
 
                     .availability-badge {
