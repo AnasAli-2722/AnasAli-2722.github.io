@@ -89,31 +89,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const techIcons = document.querySelectorAll('.tech-icon');
-    
-    techIcons.forEach(icon => {
-        icon.addEventListener('mouseenter', () => {
-            icon.style.animation = 'float 2s ease-in-out infinite';
+    const techPills = document.querySelectorAll('.tech-pill');
+
+    techPills.forEach(pill => {
+        if (pill.getAttribute('aria-hidden') !== 'true') {
+            pill.setAttribute('tabindex', '0');
+        }
+
+        pill.addEventListener('pointermove', (event) => {
+            const rect = pill.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            pill.style.setProperty('--spot-x', `${x}px`);
+            pill.style.setProperty('--spot-y', `${y}px`);
         });
-        
-        icon.addEventListener('mouseleave', () => {
-            icon.style.animation = 'none';
+
+        pill.addEventListener('pointerenter', () => {
+            pill.classList.add('is-interacting');
+        });
+
+        pill.addEventListener('pointerleave', () => {
+            pill.classList.remove('is-interacting');
+        });
+
+        pill.addEventListener('focus', () => {
+            pill.classList.add('is-interacting');
+        });
+
+        pill.addEventListener('blur', () => {
+            pill.classList.remove('is-interacting');
         });
     });
 });
-
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-`;
-document.head.appendChild(style);
 
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
