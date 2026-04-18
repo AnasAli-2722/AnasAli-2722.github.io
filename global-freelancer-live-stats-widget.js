@@ -5,12 +5,14 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
         this._clockInterval = null;
         this._nextMinuteTimeout = null;
         this._seed = 2722;
+        this._githubHandle = this.getAttribute('handle') || 'AnasAli-2722';
     }
 
     connectedCallback() {
         this.render();
         this.initializeClock();
         this.populateContributionGrid();
+        this.loadGitHubActivity();
     }
 
     disconnectedCallback() {
@@ -274,18 +276,18 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
                 <section class="section section-bottom" aria-label="Developer activity">
                     <div class="activity-header">
                         <span class="activity-title">GitHub Activity</span>
-                        <span class="activity-handle">AnasAli-2722</span>
+                        <span class="activity-handle" id="activity-handle">${this._githubHandle}</span>
                     </div>
 
                     <div class="contribution-grid" id="contribution-grid" aria-label="Commit activity heat grid"></div>
 
                     <div class="metrics-row">
                         <div class="metric">
-                            <div class="metric-value">47</div>
+                            <div class="metric-value" id="recent-commits-value">47</div>
                             <div class="metric-label">Recent Commits</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">18 Days</div>
+                            <div class="metric-value" id="current-streak-value">18 Days</div>
                             <div class="metric-label">Current Streak</div>
                         </div>
                     </div>
@@ -321,9 +323,11 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
         }, msUntilNextMinute);
     }
 
-    populateContributionGrid() {
+    populateContributionGrid(opacityValues = null) {
         const gridElement = this._shadow.getElementById('contribution-grid');
         if (!gridElement) return;
+
+        gridElement.innerHTML = '';
 
         const cellCount = 84;
         const opacities = [0.12, 0.2, 0.32, 0.5, 0.75, 0.95];
@@ -331,10 +335,113 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
         for (let i = 0; i < cellCount; i++) {
             const cell = document.createElement('div');
             cell.className = 'commit-cell';
-            const opacity = opacities[this.seededRandomIndex(opacities.length)];
+            const opacity = Array.isArray(opacityValues) && opacityValues[i] !== undefined
+                ? opacityValues[i]
+                : opacities[this.seededRandomIndex(opacities.length)];
             cell.style.opacity = String(opacity);
             gridElement.appendChild(cell);
         }
+    }
+
+    async loadGitHubActivity() {
+        try {
+            const events = await this.fetchPublicEvents(this._githubHandle);
+
+            if (!events.length) return;
+
+            const stats = this.buildStatsFromEvents(events);
+            this.populateContributionGrid(stats.contributionOpacity);
+            this.updateMetrics(stats.recentCommits, stats.currentStreakDays);
+        } catch (error) {
+            console.warn('GitHub activity fetch failed, using fallback demo data.', error);
+        }
+    }
+
+    async fetchPublicEvents(handle) {
+        const requests = [1, 2, 3].map(page =>
+            fetch(`https://api.github.com/users/${encodeURIComponent(handle)}/events/public?per_page=100&page=${page}`, {
+                headers: {
+                    Accept: 'application/vnd.github+json'
+                }
+            })
+        );
+
+        const responses = await Promise.all(requests);
+        const successful = responses.filter(response => response.ok);
+        if (!successful.length) return [];
+
+        const pages = await Promise.all(successful.map(response => response.json()));
+        return pages.flat();
+    }
+
+    buildStatsFromEvents(events) {
+        const totalDays = 84;
+        const recentWindow = 30;
+        const today = new Date();
+        const dayKeys = [];
+
+        for (let offset = totalDays - 1; offset >= 0; offset--) {
+            const date = new Date(today);
+            date.setDate(today.getDate() - offset);
+            dayKeys.push(this.dateKey(date));
+        }
+
+        const commitCountByDay = new Map(dayKeys.map(key => [key, 0]));
+
+        events.forEach(event => {
+            if (event.type !== 'PushEvent' || !event.created_at) return;
+
+            const key = this.dateKey(new Date(event.created_at));
+            if (!commitCountByDay.has(key)) return;
+
+            const commitsLength = Array.isArray(event.payload?.commits)
+                ? event.payload.commits.length
+                : 0;
+
+            const increment = commitsLength > 0 ? commitsLength : 1;
+            commitCountByDay.set(key, commitCountByDay.get(key) + increment);
+        });
+
+        const counts = dayKeys.map(key => commitCountByDay.get(key) || 0);
+        const maxCount = Math.max(...counts, 1);
+        const contributionOpacity = counts.map(count => {
+            if (count === 0) return 0.1;
+            const normalized = count / maxCount;
+            return Number((0.18 + normalized * 0.77).toFixed(2));
+        });
+
+        const recentCounts = counts.slice(-recentWindow);
+        const recentCommits = recentCounts.reduce((sum, value) => sum + value, 0);
+
+        let currentStreakDays = 0;
+        for (let i = counts.length - 1; i >= 0; i--) {
+            if (counts[i] > 0) {
+                currentStreakDays++;
+            } else {
+                break;
+            }
+        }
+
+        return {
+            contributionOpacity,
+            recentCommits,
+            currentStreakDays
+        };
+    }
+
+    updateMetrics(recentCommits, currentStreakDays) {
+        const recentEl = this._shadow.getElementById('recent-commits-value');
+        const streakEl = this._shadow.getElementById('current-streak-value');
+
+        if (recentEl) recentEl.textContent = String(recentCommits);
+        if (streakEl) streakEl.textContent = `${currentStreakDays} Days`;
+    }
+
+    dateKey(date) {
+        const year = date.getUTCFullYear();
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
 
     seededRandomIndex(max) {
@@ -344,4 +451,6 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
     }
 }
 
-customElements.define('global-freelancer-live-stats-widget', GlobalFreelancerLiveStatsWidget);
+if (!customElements.get('global-freelancer-live-stats-widget')) {
+    customElements.define('global-freelancer-live-stats-widget', GlobalFreelancerLiveStatsWidget);
+}
