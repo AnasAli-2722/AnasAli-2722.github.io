@@ -1,0 +1,151 @@
+PROJECT CONTEXT FOR AI MODELS
+
+Project Name:
+- Anas Ali personal portfolio website (static site)
+
+Project Type:
+- Pure frontend static website
+- No build step, no framework, no backend
+- Runs by opening index.html in browser or deploying to GitHub Pages
+
+Main Goal:
+- Showcase portfolio, skills, services, and contact links with a modern animated design
+
+Current Theme/Style:
+- Dark cyber-style UI
+- CSS variables drive colors
+- Primary accents currently use blue + pink glow styling
+- Fonts: Orbitron (headings) + JetBrains Mono (body/tech style)
+
+==================================================
+1) FILE/FOLDER STRUCTURE
+==================================================
+
+Root:
+- index.html            -> Main page markup and section layout
+- styles.css            -> Full styling, theme variables, animations, responsive rules
+- script.js             -> Typewriter effect, intersection animations, nav active states
+- README.md             -> Public project description and setup instructions
+- PROJECT_CONTEXT_FOR_AI.txt -> (this file)
+
+Assets:
+- assets/Anas.png       -> Profile image shown in hero section
+
+==================================================
+2) HTML STRUCTURE (index.html)
+==================================================
+
+Top-level sections/components:
+1. Hero section (#hero)
+   - Animated SVG "river" text path in background
+   - Profile image container showing assets/Anas.png
+   - Intro text + typewriter line ("developer", "designer")
+
+2. Portfolio/Bento section (#portfolio)
+   - Grid with 4 bento cards:
+     - Card 1: Project highlight (Anas Space)
+     - Card 2: Skills with progress bars
+     - Card 3: Freelance services + CTA button
+     - Card 4: Tech stack icon blocks
+
+3. Contact section (#contact)
+   - Heading, short text, contact link buttons
+
+4. Floating bottom nav dock
+   - Anchor links to hero, portfolio, contact
+   - Active nav item updates based on visible section
+
+External resources loaded in HTML:
+- Google Fonts preconnect and stylesheet
+- Local styles.css
+- Local script.js
+
+==================================================
+3) CSS ARCHITECTURE (styles.css)
+==================================================
+
+Theme tokens (in :root):
+- --bg-color, --bg-secondary
+- --primary-accent, --secondary-accent
+- --text-main, --text-muted
+- --border-color, --glow-color
+
+Important style systems:
+- Hero visual styling (radial background, layered z-index composition)
+- SVG river text styling
+- Bento grid layout with hover/entry animation
+- Skill bars + tags + CTA styles
+- Tech icon interactive card effects
+- Contact buttons
+- Fixed glassmorphism-style nav dock
+
+Animations/keyframes include:
+- float-subtle
+- blink
+- fadeInUp
+- dynamic float keyframe injected by JS
+
+Responsive behavior:
+- Breakpoints at 1024px, 768px, 480px
+- Bento grid goes from 4-column to 2-column to 1-column
+- Text/image/nav sizes scale down for mobile
+
+==================================================
+4) JAVASCRIPT LOGIC (script.js)
+==================================================
+
+Core behaviors:
+1. Typewriter effect
+   - Targets #typewriter
+   - Cycles through texts: developer, designer
+   - Handles typing/deleting timing
+
+2. Bento reveal animation
+   - Uses IntersectionObserver
+   - Adds .fade-in class when card enters viewport
+
+3. Nav dock active state + smooth scrolling
+   - Observes section visibility
+   - Applies .active class to matching nav item
+   - Intercepts click and scrolls smoothly
+
+4. Tech icon hover motion
+   - Adds/removes float animation on mouse enter/leave
+
+5. Minor idle callback log
+   - requestIdleCallback logs optimization message when available
+
+==================================================
+5) HOW TO RUN / DEPLOY
+==================================================
+
+Local:
+- Open index.html in browser
+
+Deploy:
+- GitHub Pages static hosting (already suitable)
+
+==================================================
+6) IMPORTANT NOTES FOR ANY AI EDITING THIS PROJECT
+==================================================
+
+- Keep it framework-free unless explicitly requested.
+- Preserve section IDs: #hero, #portfolio, #contact (used by nav logic).
+- If changing theme, prefer editing CSS variables in :root first.
+- Preserve class hooks used by JS:
+  - .bento-item (observer animation)
+  - .nav-dock-item + data-section
+  - #typewriter
+  - section[id]
+- Ensure responsive behavior remains intact after UI changes.
+- Update README if major design/feature changes are introduced.
+
+==================================================
+7) QUICK ENHANCEMENT IDEAS (OPTIONAL)
+==================================================
+
+- Convert contact placeholder links to real profiles.
+- Add real project cards with screenshots and links.
+- Add accessibility improvements (focus states, reduced motion support).
+- Replace inline skill widths with data-driven values.
+- Add SEO meta tags and Open Graph tags in head.
