@@ -89,37 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const techPills = document.querySelectorAll('.tech-pill');
-
-    techPills.forEach(pill => {
-        if (pill.getAttribute('aria-hidden') !== 'true') {
-            pill.setAttribute('tabindex', '0');
-        }
-
-        pill.addEventListener('pointermove', (event) => {
-            const rect = pill.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            pill.style.setProperty('--spot-x', `${x}px`);
-            pill.style.setProperty('--spot-y', `${y}px`);
-        });
-
-        pill.addEventListener('pointerenter', () => {
-            pill.classList.add('is-interacting');
-        });
-
-        pill.addEventListener('pointerleave', () => {
-            pill.classList.remove('is-interacting');
-        });
-
-        pill.addEventListener('focus', () => {
-            pill.classList.add('is-interacting');
-        });
-
-        pill.addEventListener('blur', () => {
-            pill.classList.remove('is-interacting');
-        });
-    });
+    // Tech ticker interactions are handled purely with CSS.
 });
 
 if ('requestIdleCallback' in window) {
