@@ -29,7 +29,8 @@ class GlobalFreelancerLiveStatsCard extends StatefulWidget {
 }
 
 class _GlobalFreelancerLiveStatsCardState
-    extends State<GlobalFreelancerLiveStatsCard> with SingleTickerProviderStateMixin {
+    extends State<GlobalFreelancerLiveStatsCard>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _pulseController;
   late final Timer _minuteTimer;
 
@@ -41,7 +42,9 @@ class _GlobalFreelancerLiveStatsCardState
     super.initState();
 
     _pktNow = _pktTime();
-    _activityIntensities = _generateContributionIntensities(widget.contributionCellCount);
+    _activityIntensities = _generateContributionIntensities(
+      widget.contributionCellCount,
+    );
 
     _pulseController = AnimationController(
       vsync: this,
@@ -243,12 +246,13 @@ class _GlobalPresenceSection extends StatelessWidget {
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 7,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(999),
-                      border: Border.all(
-                        color: accent.withValues(alpha: 0.46),
-                      ),
+                      border: Border.all(color: accent.withValues(alpha: 0.46)),
                       gradient: LinearGradient(
                         colors: [
                           secondaryAccent.withValues(alpha: 0.16),
@@ -329,8 +333,10 @@ class _DeveloperActivitySection extends StatelessWidget {
               builder: (context, constraints) {
                 const columns = 21;
                 const spacing = 4.0;
-                final cell = ((constraints.maxWidth - ((columns - 1) * spacing)) / columns)
-                    .clamp(6.0, 10.0);
+                final cell =
+                    ((constraints.maxWidth - ((columns - 1) * spacing)) /
+                            columns)
+                        .clamp(6.0, 10.0);
 
                 return Wrap(
                   spacing: spacing,
@@ -433,7 +439,9 @@ class _DottedWorldBackground extends StatelessWidget {
     return CustomPaint(
       painter: _DottedWorldPainter(
         dotColor: Colors.white.withValues(alpha: 0.06),
-        accentColor: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.08),
+        accentColor: Theme.of(
+          context,
+        ).colorScheme.secondary.withValues(alpha: 0.08),
       ),
     );
   }
