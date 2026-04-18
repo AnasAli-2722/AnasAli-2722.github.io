@@ -490,7 +490,7 @@ global-freelancer-live-stats-widget {
 
 .tech-marquee-reverse {
     --ticker-duration: 26s;
-    opacity: 0.9;
+    opacity: 0.72;
 }
 
 .tech-marquee::before,
@@ -533,6 +533,10 @@ global-freelancer-live-stats-widget {
 
 .tech-marquee-reverse .tech-track {
     animation-direction: reverse;
+}
+
+.tech-marquee-reverse .tech-pill {
+    transform: scale(0.96);
 }
 
 .tech-pill {
