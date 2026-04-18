@@ -470,14 +470,27 @@ global-freelancer-live-stats-widget {
     box-shadow: 0 0 20px var(--glow-color);
 }
 
+.tech-marquee-stack {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+}
+
 .tech-marquee {
     --ticker-duration: 22s;
     position: relative;
     width: 100%;
     overflow: hidden;
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
+}
+
+.tech-marquee-reverse {
+    --ticker-duration: 26s;
+    opacity: 0.9;
 }
 
 .tech-marquee::before,
@@ -512,8 +525,14 @@ global-freelancer-live-stats-widget {
 }
 
 .tech-marquee:hover .tech-track,
-.tech-marquee:focus-within .tech-track {
+.tech-marquee:focus-within .tech-track,
+.tech-marquee-stack:hover .tech-track,
+.tech-marquee-stack:focus-within .tech-track {
     animation-play-state: paused;
+}
+
+.tech-marquee-reverse .tech-track {
+    animation-direction: reverse;
 }
 
 .tech-pill {
@@ -771,6 +790,10 @@ global-freelancer-live-stats-widget {
     .tech-track {
         gap: 10px;
         padding-inline: 4px;
+    }
+
+    .tech-marquee-stack {
+        gap: 8px;
     }
 
     .tech-pill {
