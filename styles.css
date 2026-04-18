@@ -470,53 +470,118 @@ global-freelancer-live-stats-widget {
     box-shadow: 0 0 20px var(--glow-color);
 }
 
-.tech-icons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+.tech-marquee {
+    --ticker-duration: 22s;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
     flex: 1;
-    justify-items: center;
-    align-content: center;
+    display: flex;
+    align-items: center;
 }
 
-.tech-icon {
+.tech-marquee::before,
+.tech-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 56px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tech-marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-secondary), transparent);
+}
+
+.tech-marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-secondary), transparent);
+}
+
+.tech-track {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: max-content;
+    padding-inline: 8px;
+    animation: techTickerScroll var(--ticker-duration) linear infinite;
+    will-change: transform;
+}
+
+.tech-marquee:hover .tech-track,
+.tech-marquee:focus-within .tech-track {
+    animation-play-state: paused;
+}
+
+.tech-pill {
+    flex: 0 0 auto;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-}
-
-.tech-icon:hover {
-    background-color: rgba(59, 197, 181, 0.12);
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px var(--glow-color);
-}
-
-.tech-icon svg {
-    width: 50px;
-    height: 50px;
-    color: var(--secondary-accent);
-}
-
-.tech-icon:hover svg {
-    color: var(--primary-accent);
-    filter: drop-shadow(0 0 10px var(--glow-color));
-}
-
-.tech-icon span {
+    padding: 10px 16px;
+    border: 1px solid rgba(59, 197, 181, 0.28);
+    border-radius: 999px;
+    background: linear-gradient(145deg, rgba(59, 197, 181, 0.14), rgba(46, 157, 146, 0.08));
+    color: var(--text-main);
     font-size: 12px;
-    color: var(--text-muted);
+    letter-spacing: 0.9px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.28);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.tech-icon:hover span {
+.tech-pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(59, 197, 181, 0.45);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 18px rgba(59, 197, 181, 0.18);
+}
+
+.tech-pill-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: var(--primary-accent);
+}
+
+.tech-pill-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.tech-pill-label {
+    line-height: 1;
+}
+
+.tech-flutter .tech-pill-icon { color: #6fdaff; }
+.tech-html .tech-pill-icon { color: #f59f7e; }
+.tech-css .tech-pill-icon { color: #7bc6ff; }
+.tech-javascript .tech-pill-icon { color: #f5df78; }
+.tech-supabase .tech-pill-icon { color: #5add9e; }
+.tech-firebase .tech-pill-icon { color: #ffb35a; }
+.tech-python .tech-pill-icon { color: #8eb2ff; }
+.tech-cpp .tech-pill-icon { color: #b7a8ff; }
+
+@media (prefers-reduced-motion: reduce) {
+    .tech-track {
+        animation: none;
+        transform: translateX(0);
+    }
+}
+
+@keyframes techTickerScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .contact-section {
@@ -698,9 +763,25 @@ global-freelancer-live-stats-widget {
         padding: 6px 12px;
     }
 
-    .tech-icons {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .tech-marquee::before,
+    .tech-marquee::after {
+        width: 30px;
+    }
+
+    .tech-track {
+        gap: 10px;
+        padding-inline: 4px;
+    }
+
+    .tech-pill {
+        padding: 8px 12px;
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .tech-pill-icon {
+        width: 14px;
+        height: 14px;
     }
 
     .hero {
