@@ -261,6 +261,47 @@ class GlobalFreelancerLiveStatsWidget extends HTMLElement {
                         font-size: 10px;
                     }
                 }
+
+                @media (max-width: 480px) {
+                    :host {
+                        min-height: 310px;
+                    }
+
+                    .section {
+                        padding: 12px;
+                    }
+
+                    .activity-header {
+                        font-size: 11px;
+                    }
+
+                    .pkt-time {
+                        font-size: 1.45rem;
+                    }
+
+                    .contribution-grid {
+                        --commit-cell-size: 8px;
+                        --commit-gap: 2px;
+                        grid-template-columns: repeat(10, var(--commit-cell-size));
+                        min-height: 78px;
+                    }
+
+                    .metrics-row {
+                        gap: 6px;
+                    }
+
+                    .metric {
+                        padding: 7px 8px;
+                    }
+
+                    .metric-value {
+                        font-size: 13px;
+                    }
+
+                    .metric-label {
+                        font-size: 10px;
+                    }
+                }
             </style>
 
             <div class="widget-shell">

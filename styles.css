@@ -19,6 +19,16 @@ html {
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    max-width: 100%;
+}
+
+img,
+svg {
+    max-width: 100%;
+}
+
 body {
     font-family: 'JetBrains Mono', monospace;
     background-color: var(--bg-color);
@@ -175,18 +185,20 @@ body {
 
 .intro-greeting {
     font-family: 'Orbitron', sans-serif;
-    font-size: 48px;
+    font-size: clamp(1.7rem, 4vw, 3rem);
     font-weight: 900;
     color: var(--text-main);
     margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: clamp(1px, 0.35vw, 4px);
+    line-height: 1.15;
+    word-break: break-word;
     text-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
 }
 
 .intro-typewriter {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 28px;
+    font-size: clamp(1rem, 2.2vw, 1.75rem);
     color: var(--text-main);
     display: flex;
     align-items: center;
@@ -208,7 +220,7 @@ body {
 .typewriter-text {
     color: var(--primary-accent);
     font-weight: 600;
-    min-width: 150px;
+    min-width: clamp(90px, 18vw, 150px);
     text-align: left;
 }
 
@@ -240,7 +252,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto auto;
     gap: 20px;
-    padding: 60px 40px;
+    padding: clamp(32px, 4vw, 60px) clamp(16px, 3.5vw, 40px);
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -738,7 +750,7 @@ global-freelancer-live-stats-widget {
 
     .bento-grid {
         grid-template-columns: 1fr;
-        padding: 30px 20px;
+        padding: 28px 16px;
         gap: 12px;
     }
 
@@ -847,13 +859,69 @@ global-freelancer-live-stats-widget {
     }
 }
 
+@media (max-width: 640px) {
+    .hero {
+        min-height: auto;
+        padding-top: 3.4rem;
+        padding-bottom: 3.8rem;
+    }
+
+    .hero-content {
+        gap: 18px;
+    }
+
+    .hero-intro {
+        max-width: 100%;
+    }
+
+    .typewriter-text {
+        min-width: 0;
+    }
+
+    .intro-typewriter {
+        flex-wrap: wrap;
+        row-gap: 2px;
+    }
+
+    .nav-dock {
+        left: 12px;
+        right: 12px;
+        width: auto;
+        transform: none;
+        bottom: 12px;
+        padding: 10px 12px;
+        gap: 8px;
+        justify-content: center;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .nav-dock::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-dock-item {
+        white-space: nowrap;
+        flex: 0 0 auto;
+    }
+
+    .contact-section {
+        padding: 64px 20px 96px;
+    }
+
+    .contact-section p {
+        margin-bottom: 26px;
+    }
+}
+
 @media (max-width: 480px) {
     .bento-grid {
-        padding: 20px 15px;
+        padding: 20px 12px;
     }
 
     .bento-item {
-        padding: 20px;
+        padding: 16px;
+        border-radius: 10px;
     }
 
     .contact-links {
