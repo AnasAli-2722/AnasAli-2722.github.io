@@ -714,6 +714,11 @@ global-freelancer-live-stats-widget {
     filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.35));
 }
 
+.we-two-image .project-mockup-image {
+    transform: scale(1.18);
+    transform-origin: center center;
+}
+
 .anas-space-image {
     background:
         linear-gradient(150deg, rgba(59, 197, 181, 0.2), transparent 56%),
