@@ -1052,6 +1052,252 @@ global-freelancer-live-stats-widget {
     box-shadow: 0 0 30px var(--glow-color);
 }
 
+.connect-top-button {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    z-index: 1200;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 197, 181, 0.6);
+    background: linear-gradient(130deg, rgba(59, 197, 181, 0.26), rgba(46, 157, 146, 0.16));
+    color: #d8fffa;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 22px rgba(59, 197, 181, 0.38), 0 8px 18px rgba(0, 0, 0, 0.35);
+    transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+}
+
+.connect-top-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 30px rgba(59, 197, 181, 0.5), 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.connect-page-body {
+    min-height: 100vh;
+    background: radial-gradient(circle at 18% 16%, rgba(59, 197, 181, 0.14), transparent 34%), var(--bg-color);
+    color: var(--text-main);
+}
+
+.connect-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px clamp(16px, 3vw, 42px) 14px;
+}
+
+.connect-back-link {
+    color: var(--primary-accent);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.connect-back-link:hover {
+    text-decoration: underline;
+}
+
+.connect-heading-row {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.connect-mini-bubble {
+    width: clamp(82px, 10vw, 104px);
+    aspect-ratio: 1 / 1;
+    border-radius: 62% 38% 44% 56% / 54% 42% 58% 46%;
+    border: 1px solid rgba(59, 197, 181, 0.45);
+    background: linear-gradient(150deg, #273543 0%, #1a242e 68%, #141d27 100%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 22px rgba(59, 197, 181, 0.24);
+    animation: blobMorph 10s ease-in-out infinite, float-subtle 7s ease-in-out infinite;
+}
+
+.connect-mini-bubble span {
+    color: var(--primary-accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.62rem, 1vw, 0.74rem);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    text-align: center;
+    line-height: 1.2;
+    padding: 12px;
+}
+
+.connect-page-title {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: clamp(1px, 0.6vw, 4px);
+    font-size: clamp(1.6rem, 3.4vw, 3rem);
+}
+
+.connect-subtitle {
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: clamp(0.92rem, 1.5vw, 1.04rem);
+}
+
+.connect-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px clamp(16px, 3vw, 42px) 72px;
+}
+
+.connect-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.connect-card {
+    border-radius: 14px;
+    border: 1px solid rgba(231, 237, 244, 0.08);
+    background: linear-gradient(155deg, rgba(27, 35, 45, 0.95), rgba(17, 24, 32, 0.9));
+    padding: 18px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.connect-card.compact-card {
+    padding: 0;
+    min-height: 0;
+}
+
+.connect-card .compact-card-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: inherit;
+    padding: 20px 18px;
+    min-height: 150px;
+    width: 100%;
+    text-align: left;
+}
+
+.compact-platform {
+    margin-top: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+.compact-handle {
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.2px;
+    text-align: left;
+    word-break: break-word;
+}
+
+.connect-card.compact-card .connect-card-icon {
+    width: 52px;
+    height: 52px;
+}
+
+.connect-card.compact-card .connect-card-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.connect-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(59, 197, 181, 0.45);
+    box-shadow: 0 0 0 1px rgba(59, 197, 181, 0.18), 0 18px 38px rgba(0, 0, 0, 0.32);
+}
+
+.connect-card h2 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1rem, 1.7vw, 1.3rem);
+    letter-spacing: 1px;
+}
+
+.connect-card p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.connect-card a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.connect-card a:hover {
+    color: #82e8dc;
+}
+
+.connect-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid rgba(59, 197, 181, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-accent);
+    background: rgba(59, 197, 181, 0.08);
+}
+
+.connect-card-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.connect-card-linkedin {
+    grid-column: span 5;
+    grid-row: span 2;
+}
+
+.connect-card-github {
+    grid-column: span 4;
+}
+
+.connect-card-instagram {
+    grid-column: span 3;
+}
+
+.connect-card-email {
+    grid-column: span 4;
+}
+
+.connect-card-fiverr {
+    grid-column: span 3;
+}
+
+.connect-card-whatsapp {
+    grid-column: span 5;
+}
+
+.connect-card-linkedin .compact-card-link {
+    min-height: 250px;
+}
+
+.connect-card-whatsapp .compact-card-link {
+    min-height: 190px;
+}
+
+.connect-card-github .compact-card-link,
+.connect-card-email .compact-card-link {
+    min-height: 180px;
+}
+
 .nav-dock {
     position: fixed;
     bottom: 40px;
@@ -1252,6 +1498,56 @@ global-freelancer-live-stats-widget {
         text-align: center;
         padding: 18px 16px;
     }
+
+    .connect-top-button {
+        top: 12px;
+        right: 12px;
+        padding: 8px 14px;
+        font-size: 11px;
+    }
+
+    .connect-bento-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .connect-bento-grid .connect-card.compact-card {
+        display: flex;
+    }
+
+    .connect-bento-grid .compact-card-link {
+        min-height: 114px;
+        padding: 12px 8px 10px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .connect-card-linkedin,
+    .connect-card-github,
+    .connect-card-instagram,
+    .connect-card-email,
+    .connect-card-fiverr,
+    .connect-card-whatsapp {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .compact-platform {
+        font-size: 0.68rem;
+        text-align: center;
+    }
+
+    .compact-handle {
+        font-size: 0.63rem;
+        text-align: center;
+    }
+
+    .connect-heading-row {
+        align-items: flex-start;
+        gap: 10px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1339,5 +1635,30 @@ global-freelancer-live-stats-widget {
 
     .user-image-placeholder {
         width: min(84vw, 330px);
+    }
+
+    .connect-bento-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .compact-card-link {
+        min-height: 108px;
+        padding: 12px 8px 10px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .compact-platform {
+        font-size: 0.66rem;
+    }
+
+    .compact-handle {
+        font-size: 0.62rem;
+    }
+
+    .connect-mini-bubble {
+        width: 76px;
     }
 }

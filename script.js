@@ -11,6 +11,10 @@ let deleteSpeed = 60;
 let delayBetween = 2000;
 
 function typewriter() {
+    if (!typewriterElement) {
+        return;
+    }
+
     const currentText = texts[textIndex];
     
     if (isDeleting) {
@@ -36,7 +40,9 @@ function typewriter() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    typewriter();
+    if (typewriterElement) {
+        typewriter();
+    }
 });
 
 const observerOptions = {
