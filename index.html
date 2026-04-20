@@ -31,13 +31,16 @@
         </div>
 
         <div class="hero-content">
-            <div class="user-image-container">
+            <div class="user-image-container reveal-on-scroll" data-reveal-delay="0">
                 <div class="user-image-placeholder">
-                    <img src="assets/Anas.png" alt="Anas" class="user-image">
+                    <div class="bubble-copy" aria-live="polite">
+                        <span class="bubble-name">ANAS ALI</span>
+                        <span id="bubble-tagline" class="bubble-tagline">Building scalable Flutter apps</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="hero-intro">
+            <div class="hero-intro reveal-on-scroll" data-reveal-delay="120">
                 <h1 class="intro-greeting">Assalamu Alaikum, I am Anas</h1>
                 <p class="intro-typewriter">
                     <span class="prompt-symbol">&gt;</span> 
@@ -159,13 +162,13 @@
     </section>
 
     <section class="selected-projects" id="featured-projects" aria-label="Featured projects showcase">
-        <div class="selected-projects-header">
+        <div class="selected-projects-header reveal-on-scroll" data-reveal-delay="60">
             <h2>Featured Projects</h2>
             <p>Two flagship builds focused on performance, polish, and real-world usability.</p>
         </div>
 
         <div class="projects-grid">
-            <article class="project-card">
+            <article class="project-card reveal-on-scroll" data-reveal-delay="120">
                 <a href="projects/anas-space.html" class="project-image-link" aria-label="Open Anas Space project details">
                     <div class="project-image-placeholder anas-space-image" aria-label="Anas Space dual-device mockup placeholder">
                         <img src="assets/Anas_Space.png" alt="Anas Space project mockup" class="project-mockup-image">
@@ -187,7 +190,7 @@
                 </div>
             </article>
 
-            <article class="project-card">
+            <article class="project-card reveal-on-scroll" data-reveal-delay="180">
                 <a href="projects/we-two.html" class="project-image-link" aria-label="Open We Two project details">
                     <div class="project-image-placeholder we-two-image" aria-label="We Two mobile mockup placeholder">
                         <img src="assets/WE_Two.png" alt="We Two project mockup" class="project-mockup-image">
@@ -211,21 +214,23 @@
         </div>
     </section>
 
-    <section class="contact-section" id="contact">
+    <section class="contact-section reveal-on-scroll" id="contact" data-reveal-delay="80">
         <h2>Let's Create Something</h2>
         <p>Got a project in mind? Let's collaborate.</p>
         <div class="contact-links">
-            <a href="mailto:contact@example.com" class="contact-link">Email</a>
-            <a href="#" class="contact-link">LinkedIn</a>
-            <a href="#" class="contact-link">GitHub</a>
-            <a href="#" class="contact-link">Twitter</a>
+            <a href="mailto:usernameistaken444@gmail.com" class="contact-link">Email</a>
+            <a href="https://www.linkedin.com/in/anas-ali-dev" class="contact-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/AnasAli-2722" class="contact-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.fiverr.com/s/6YvrXrB" class="contact-link" target="_blank" rel="noopener noreferrer">Fiverr</a>
         </div>
     </section>
 
     <nav class="nav-dock">
         <a href="#hero" class="nav-dock-item" data-section="hero">Home</a>
         <a href="#portfolio" class="nav-dock-item" data-section="portfolio">Portfolio</a>
+        <a href="#featured-projects" class="nav-dock-item" data-section="featured-projects">Projects</a>
         <a href="#contact" class="nav-dock-item" data-section="contact">Contact</a>
+        <a href="assets/Anas_Ali_CV.pdf" class="nav-dock-item nav-dock-cv" target="_blank" rel="noopener noreferrer" download>Download CV</a>
     </nav>
 
     <script src="global-freelancer-live-stats-widget.js"></script>
