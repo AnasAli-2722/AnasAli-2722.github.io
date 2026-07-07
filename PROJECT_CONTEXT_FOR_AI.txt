@@ -1,151 +1,248 @@
-PROJECT CONTEXT FOR AI MODELS
+PROJECT CONTEXT FOR AI MODELS & DEVELOPER REFERENCE
 
 Project Name:
-- Anas Ali personal portfolio website (static site)
+- Anas Ali Personal Portfolio & Creative Developer Website
 
 Project Type:
-- Pure frontend static website
-- No build step, no framework, no backend
-- Runs by opening index.html in browser or deploying to GitHub Pages
+- Pure Frontend Static Website (HTML5, Vanilla CSS3, Vanilla JavaScript, Web Components)
+- No build step, no bundler, no heavy framework required
+- Runs directly by opening index.html in any modern browser or hosting via GitHub Pages
 
 Main Goal:
-- Showcase portfolio, skills, services, and contact links with a modern animated design
-
-Current Theme/Style:
-- Dark cyber-style UI
-- CSS variables drive colors
-- Primary accents currently use blue + pink glow styling
-- Fonts: Orbitron (headings) + JetBrains Mono (body/tech style)
+- Showcase personal brand, software development portfolio (Flutter, C++, Full-Stack), skills, freelance services, and contact links through a high-performance, visually stunning cyber-style UI with rich micro-animations.
 
 ==================================================
-1) FILE/FOLDER STRUCTURE
+1) HOW THE UI IS LOOKING RIGHT NOW (VISUAL OVERVIEW)
 ==================================================
 
-Root:
-- index.html            -> Main page markup and section layout
-- styles.css            -> Full styling, theme variables, animations, responsive rules
-- script.js             -> Typewriter effect, intersection animations, nav active states
-- README.md             -> Public project description and setup instructions
-- PROJECT_CONTEXT_FOR_AI.txt -> (this file)
+Theme & Color Palette:
+- Dark Cyber / Sci-Fi Aesthetic: Sleek dark mode using deep slate and blue-black tones as background layers (--bg-color: #12181f, --bg-secondary: #1b232d).
+- Glowing Neon Accents: Vibrant cyan and teal accents (--primary-accent: #3bc5b5, --secondary-accent: #2e9d92) create eye-catching focal points, borders, and hover glows.
+- Typography: 
+  - 'Orbitron' (Google Fonts) used for bold, futuristic headings, titles, and numbers.
+  - 'JetBrains Mono' (Google Fonts) used for tech-inspired body copy, navigation, tags, and terminal typewriter effects.
+- Visual Polish: Glassmorphism backdrops, subtle box-shadow glows, layered z-index compositions, and smooth drop-shadows on device mockups.
 
-Assets:
-- assets/Anas.png       -> Profile image shown in hero section
-
-==================================================
-2) HTML STRUCTURE (index.html)
-==================================================
-
-Top-level sections/components:
-1. Hero section (#hero)
-   - Animated SVG "river" text path in background
-   - Profile image container showing assets/Anas.png
-   - Intro text + typewriter line ("developer", "designer")
-
-2. Portfolio/Bento section (#portfolio)
-   - Grid with 4 bento cards:
-     - Card 1: Project highlight (Anas Space)
-     - Card 2: Skills with progress bars
-     - Card 3: Freelance services + CTA button
-     - Card 4: Tech stack icon blocks
-
-3. Contact section (#contact)
-   - Heading, short text, contact link buttons
-
-4. Floating bottom nav dock
-   - Anchor links to hero, portfolio, contact
-   - Active nav item updates based on visible section
-
-External resources loaded in HTML:
-- Google Fonts preconnect and stylesheet
-- Local styles.css
-- Local script.js
+Page & Layout Structure:
+1. Header / Top Contact Pill: A fixed glowing top-right "CONNECT" button linking to connect.html.
+2. Hero Section (#hero):
+   - Background: Animated SVG wave path ("river") with continuous scrolling uppercase text.
+   - Left Side (Desktop) / Top (Mobile): Interactive profile avatar bubble (assets/Anas.png) that dynamically morphs its border-radius and shifts toward the mouse pointer on hover. Includes an animated status bubble ("ANAS ALI" + rotating taglines like "Building scalable Flutter apps").
+   - Right Side: Glowing greeting ("Assalamu Alaikum, I am Anas") and a terminal-style typewriter prompt cycling through "developer" and "designer".
+3. Bento Grid Section (#portfolio):
+   - A modern 4-column CSS grid featuring glowing glassmorphism cards with staggered fade-in animations:
+     - Card 1: Project Highlight (Anas Space) with tech tags.
+     - Card 2: Live Freelancer & GitHub Stats Widget powered by a custom Web Component (<global-freelancer-live-stats-widget>).
+     - Card 3: Freelance Services list with interactive hover arrows and a "Get In Touch" CTA button.
+     - Card 4: Interactive dual auto-scrolling Tech Stack Marquee (normal and reverse tracks) with glowing technology pills and SVG icons.
+4. Featured Projects Section (#featured-projects):
+   - Mixed-layout grid with two card types:
+     - Full-Width Hero Card (Anas Space): Spans the entire grid width with a horizontal split design — text content, tech tags, and a neon "View Project Details" button on the left (45%), device mockup image on the right (55%).
+     - Standard Expandable Card (We Two): Sits in the 2-column grid. Clicking anywhere on the card (except the button or carousel controls) smoothly expands it to full-width with the same split layout. Click again to collapse.
+   - All cards feature interactive Vanilla JS Image Carousels (`.carousel-container`) with aspect-ratio-aware containers (`.carousel-landscape` 16:9 for Anas Space, `.carousel-portrait` 9:16 for We Two), glassmorphism navigation arrows, and pill-expanding pagination dots.
+   - Expand/collapse is disabled on mobile (≤768px) where cards already stack full-width.
+5. Contact Section (#contact):
+   - Clean call-to-action ("Let's Create Something") with outlined neon buttons for Email, LinkedIn, GitHub, and Fiverr.
+6. Floating Bottom Navigation Dock (.nav-dock):
+   - Fixed pill-shaped glassmorphism bar at the bottom center with links to Home, Portfolio, Projects, Contact, and a "Download CV" button.
+   - Automatically highlights the active section during scrolling via IntersectionObserver.
+7. Standalone Connect Page (connect.html):
+   - Dedicated social hub page featuring a header, back link, mini morphing bubble, and a responsive 12-column Bento grid with compact cards for LinkedIn, GitHub, Instagram, Email, Fiverr, and WhatsApp.
 
 ==================================================
-3) CSS ARCHITECTURE (styles.css)
+2) FILE & FOLDER STRUCTURE
 ==================================================
 
-Theme tokens (in :root):
-- --bg-color, --bg-secondary
-- --primary-accent, --secondary-accent
-- --text-main, --text-muted
-- --border-color, --glow-color
+Root Directory:
+- index.html                         -> Main portfolio page (Hero, Bento Grid, Featured Projects, Contact, Nav Dock).
+- connect.html                       -> Standalone multi-platform social/contact hub page.
+- styles.css                         -> Global stylesheet containing theme tokens, component styles, animations, and media queries.
+- script.js                          -> Core interactive logic (typewriter, scroll reveal, nav active states, mouse bubble morphing, project card expand/collapse, image carousels).
+- global-freelancer-live-stats-widget.js -> Custom Web Component (<global-freelancer-live-stats-widget>) fetching live freelancer stats.
+- README.md                          -> Public repository overview and setup instructions.
+- PROJECT_CONTEXT_FOR_AI.txt         -> (This file) Comprehensive reference guide for developers and AI models.
+- Anas Ali.pdf                       -> Downloadable CV/Resume file linked in the nav dock.
 
-Important style systems:
-- Hero visual styling (radial background, layered z-index composition)
-- SVG river text styling
-- Bento grid layout with hover/entry animation
-- Skill bars + tags + CTA styles
-- Tech icon interactive card effects
-- Contact buttons
-- Fixed glassmorphism-style nav dock
-
-Animations/keyframes include:
-- float-subtle
-- blink
-- fadeInUp
-- dynamic float keyframe injected by JS
-
-Responsive behavior:
-- Breakpoints at 1024px, 768px, 480px
-- Bento grid goes from 4-column to 2-column to 1-column
-- Text/image/nav sizes scale down for mobile
+Subdirectories:
+- projects/
+  ├── anas-space.html                -> Dedicated project detail page for Anas Space (Overview, Preview, Features, Planned Enhancements).
+  └── we-two.html                    -> Dedicated project detail page for We Two (Overview, Preview, Features, Planned Enhancements).
+- assets/
+  ├── Anas.png                       -> Profile cutout image used in Hero section.
+  ├── Anas_Space.png                 -> Dual-device mockup image for Anas Space.
+  └── WE_Two.png                     -> Mobile device mockup image for We Two.
 
 ==================================================
-4) JAVASCRIPT LOGIC (script.js)
+3) WHERE EVERY COMPONENT IS RIGHT NOW (EXACT LOCATIONS)
 ==================================================
 
-Core behaviors:
-1. Typewriter effect
-   - Targets #typewriter
-   - Cycles through texts: developer, designer
-   - Handles typing/deleting timing
+Use this directory to quickly locate and edit specific sections across HTML, CSS, and JS:
 
-2. Bento reveal animation
-   - Uses IntersectionObserver
-   - Adds .fade-in class when card enters viewport
+--- A. GLOBAL THEME & SETUP ---
+- CSS Variables (:root tokens): styles.css [Lines 1-10] (--bg-color, --primary-accent, etc.)
+- Base Reset & Body Styling: styles.css [Lines 12-38] (Font families, background color, overflow rules)
+- Top Right Connect Button: index.html [Line 13] | styles.css [Lines 1055-1077]
+- Scroll Reveal Animations (.reveal-on-scroll): styles.css [Lines 290-318] | script.js [Lines 48-79]
 
-3. Nav dock active state + smooth scrolling
-   - Observes section visibility
-   - Applies .active class to matching nav item
-   - Intercepts click and scrolls smoothly
+--- B. HERO SECTION (#hero) ---
+- HTML Layout: index.html [Lines 15-55]
+- Hero Container & Grid CSS: styles.css [Lines 40-60]
+- Animated Background River SVG: index.html [Lines 16-33] | styles.css [Lines 62-86]
+- Interactive Avatar Bubble Container: index.html [Lines 36-43] | styles.css [Lines 87-225]
+- Avatar Morphing & Mouse-Follow JS: script.js [Lines 119-168]
+- Rotating Status Tagline (#bubble-tagline): index.html [Line 40] | styles.css [Lines 162-193] | script.js [Lines 170-208]
+- Greeting & Typewriter Prompt (#typewriter): index.html [Lines 45-53] | styles.css [Lines 319-387] | script.js [Lines 1-46]
 
-4. Tech icon hover motion
-   - Adds/removes float animation on mouse enter/leave
+--- C. PORTFOLIO / BENTO GRID SECTION (#portfolio) ---
+- HTML Layout: index.html [Lines 57-164]
+- Bento Grid Container & Card Hover CSS: styles.css [Lines 397-456]
+- Grid Positioning & Content Typography: styles.css [Lines 457-516]
+- Bento Card 1 (Anas Space Highlight): index.html [Lines 58-69] | styles.css [Lines 457-460, 517-538 for tags]
+- Bento Card 2 (Live Stats Widget): index.html [Lines 71-75] | styles.css [Lines 462-473] | Logic in global-freelancer-live-stats-widget.js
+- Bento Card 3 (Freelance Services & CTA): index.html [Lines 77-88] | styles.css [Lines 474-477, 579-630 for list and button]
+- Bento Card 4 (Tech Stack Marquee): index.html [Lines 90-163] | styles.css [Lines 479-482, 632-784 for scrolling marquee & pills]
 
-5. Minor idle callback log
-   - requestIdleCallback logs optimization message when available
+--- D. FEATURED PROJECTS SECTION (#featured-projects) ---
+- HTML Layout: index.html [Lines 166-225]
+- Section Container & Header CSS: styles.css [Lines 785-806]
+- Projects Grid & Card Base: styles.css [Lines 808-830] (.projects-grid, .project-card, .project-card[data-expandable])
+- Full-Width Hero Card (.project-card-full): styles.css [Lines 833-835] (grid-column: 1 / -1)
+- Split Layout System: styles.css [Lines 837-907] (.project-split, .project-split-content, .project-split-media)
+- Interactive Image Carousels: styles.css [Lines 960-1080] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .carousel-dot, aspect ratio classes)
+- Image Placeholders & Custom Gradients: styles.css (.anas-space-image, .we-two-image)
+- "View Project Details" Button: styles.css (.project-details-btn with neon glow sweep via .btn-glow)
+- Expanded State for Standard Cards: styles.css (.project-card.expanded — grid-column: 1 / -1, flex-direction: row)
+- Expand/Collapse & Carousel JS Logic: script.js [Lines 210-295] (click toggle, auto-collapse, carousel slider engine)
+- Project Card 1 (Anas Space — Full-Width Hero): index.html (class: .project-card-full, links to projects/anas-space.html)
+- Project Card 2 (We Two — Standard Expandable): index.html (data-expandable="true", links to projects/we-two.html)
+
+--- E. PROJECT DETAIL PAGES (projects/*.html) ---
+- HTML Layouts: projects/anas-space.html [Lines 1-64] | projects/we-two.html [Lines 1-64]
+- Detail Page CSS: styles.css [Lines 937-1007] (.project-detail-main, .project-detail-hero, .project-detail-grid, .project-detail-card, .project-detail-preview)
+
+--- F. CONTACT SECTION (#contact) ---
+- HTML Layout: index.html [Lines 219-228]
+- Contact Section & Button CSS: styles.css [Lines 1008-1054] (.contact-section, .contact-links, .contact-link)
+
+--- G. FLOATING BOTTOM NAVIGATION DOCK (.nav-dock) ---
+- HTML Layout: index.html [Lines 230-236]
+- Nav Dock & Pill CSS: styles.css [Lines 1301-1342]
+- Active Section Highlighting & Smooth Scroll JS: script.js [Lines 81-113]
+
+--- H. CONNECT SOCIAL HUB PAGE (connect.html) ---
+- HTML Layout: connect.html [Lines 1-93]
+- Connect Body & Header CSS: styles.css [Lines 1079-1144] (.connect-page-body, .connect-header, .connect-mini-bubble)
+- Connect 12-Column Bento Grid & Cards CSS: styles.css [Lines 1145-1300] (.connect-bento-grid, .connect-card, .compact-card-link, platform-specific spans)
+
+--- I. RESPONSIVE BREAKPOINTS (MEDIA QUERIES) ---
+- Tablet / Medium Screens (max-width: 1024px): styles.css [Lines 1343-1372] (Bento grid converts to 2 columns, Projects grid to 1 column)
+- Mobile Screens (max-width: 768px): styles.css [Lines 1373-1552] (Hero stacks vertically, Bento grid to 1 column, Connect grid to 3 columns)
+- Small Mobile Screens (max-width: 640px): styles.css [Lines 1553-1612] (Nav dock adapts to 4-column bottom bar, Hero padding adjustments)
+- Compact Mobile Screens (max-width: 480px): styles.css [Lines 1613-1665] (Connect grid to 2 columns, compact card padding adjustments)
 
 ==================================================
-5) HOW TO RUN / DEPLOY
+4) DEEP DIVE: HOW TO EDIT THE BENTO GRID (#portfolio)
 ==================================================
 
-Local:
-- Open index.html in browser
+The Bento Grid is defined in index.html (lines 57-164) and styled in styles.css (lines 397-784).
+It uses CSS Grid: `grid-template-columns: repeat(4, 1fr);` on desktop.
 
-Deploy:
-- GitHub Pages static hosting (already suitable)
+How Cards are Positioned:
+- Card 1 (.bento-item-1): Spans 2 columns (`grid-column: span 2;`).
+- Card 2 (.bento-item-2): Spans 2 columns and 2 rows (`grid-column: span 2; grid-row: span 2;`).
+- Card 3 (.bento-item-3): Spans 1 column (`grid-column: span 1;`).
+- Card 4 (.bento-item-4): Spans 1 column and 2 rows (`grid-column: span 1; grid-row: span 2;`).
 
-==================================================
-6) IMPORTANT NOTES FOR ANY AI EDITING THIS PROJECT
-==================================================
-
-- Keep it framework-free unless explicitly requested.
-- Preserve section IDs: #hero, #portfolio, #contact (used by nav logic).
-- If changing theme, prefer editing CSS variables in :root first.
-- Preserve class hooks used by JS:
-  - .bento-item (observer animation)
-  - .nav-dock-item + data-section
-  - #typewriter
-  - section[id]
-- Ensure responsive behavior remains intact after UI changes.
-- Update README if major design/feature changes are introduced.
+How to Add or Modify a Bento Card:
+1. To change Card 1 text or tags: Edit index.html lines 60-67. Add new tags inside `<div class="bento-tags">` using `<span class="tag">TagName</span>`.
+2. To change Card 2 (Live Stats): The `<global-freelancer-live-stats-widget handle="AnasAli-2722">` tag automatically fetches stats. To modify its appearance or behavior, edit global-freelancer-live-stats-widget.js.
+3. To change Card 3 (Services): Edit the unordered list in index.html lines 80-85 (`<ul class="services-list">`). Each `<li>` automatically receives a cyan triangle bullet (▶) via CSS `::before`.
+4. To add technologies to Card 4 (Marquee):
+   - Add a new pill inside `.tech-track` in index.html (lines 95-137 or 141-159):
+     `<div class="tech-pill tech-yourtech"><span class="tech-pill-icon"><svg>...</svg></span><span class="tech-pill-label">YourTech</span></div>`
+   - In styles.css, add an icon color rule around line 756: `.tech-yourtech .tech-pill-icon { color: #hexcolor; }`
+   - Note: Duplicate the pills within the track to ensure a seamless infinite loop animation!
 
 ==================================================
-7) QUICK ENHANCEMENT IDEAS (OPTIONAL)
+5) DEEP DIVE: HOW TO EDIT FEATURED PROJECTS (#featured-projects)
 ==================================================
 
-- Convert contact placeholder links to real profiles.
-- Add real project cards with screenshots and links.
-- Add accessibility improvements (focus states, reduced motion support).
-- Replace inline skill widths with data-driven values.
-- Add SEO meta tags and Open Graph tags in head.
+The Featured Projects section uses a MIXED LAYOUT with two card types:
+- Full-Width Hero Card (.project-card-full): Permanently spans the full grid width with a horizontal split design.
+- Standard Expandable Card (data-expandable="true"): Lives in the 2-column grid but expands to full-width on click.
+
+Card Architecture:
+Every project card contains a `.project-split` flex container with two children:
+- `.project-split-content`: Title, description, tech tags, and a `<a class="project-details-btn">` button.
+- `.project-split-media`: Image placeholder with gradient background holding an interactive `.carousel-container`.
+
+How to Add a New Standard (Expandable) Project Card with Carousel:
+1. In index.html inside `<div class="projects-grid">`, add:
+   ```html
+   <article class="project-card reveal-on-scroll" data-reveal-delay="240" data-expandable="true">
+       <div class="project-split">
+           <div class="project-split-media">
+               <div class="project-image-placeholder your-project-image">
+                   <div class="carousel-container carousel-landscape" aria-roledescription="carousel">
+                       <div class="carousel-track">
+                           <div class="carousel-slide active"><img src="assets/Your_Project.png" class="carousel-slide-img"></div>
+                           <div class="carousel-slide"><div class="carousel-slide-placeholder">2</div></div>
+                       </div>
+                       <button class="carousel-btn carousel-btn-prev">...</button>
+                       <button class="carousel-btn carousel-btn-next">...</button>
+                       <div class="carousel-indicators">
+                           <button class="carousel-dot active"></button>
+                           <button class="carousel-dot"></button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="project-split-content">
+               <h3>Your Project Name</h3>
+               <p>Short description of your project.</p>
+               <div class="project-tech-pills">
+                   <span class="project-tech-tag">Flutter</span>
+                   <span class="project-tech-tag">Firebase</span>
+               </div>
+               <a href="projects/your-project.html" class="project-details-btn">
+                   View Project Details
+                   <span class="btn-glow" aria-hidden="true"></span>
+               </a>
+           </div>
+       </div>
+   </article>
+   ```
+2. In styles.css, define a custom gradient background for your placeholder:
+   ```css
+   .your-project-image {
+       background:
+           linear-gradient(150deg, rgba(59, 197, 181, 0.2), transparent 56%),
+           radial-gradient(circle at 80% 20%, rgba(46, 157, 146, 0.25), transparent 52%),
+           linear-gradient(130deg, #17212b, #10171f);
+   }
+   ```
+3. Create a dedicated detail page by duplicating `projects/anas-space.html`.
+4. The expand/collapse JS in script.js automatically detects new `[data-expandable]` cards — no JS changes needed.
+
+Interactive Expand/Collapse Behavior:
+- Clicking anywhere on a standard card (except the button) toggles the `.expanded` class.
+- Only one card can be expanded at a time (others auto-collapse).
+- Expand is disabled on mobile (≤768px viewport) where cards already stack vertically.
+- A debounced resize listener auto-collapses cards when the viewport shrinks past the mobile breakpoint.
+
+==================================================
+6) IMPORTANT GUIDELINES FOR AI MODELS & DEVELOPERS
+==================================================
+
+1. Preserve Pure Frontend Architecture: Do not introduce Node.js build tools, npm bundlers, TailwindCSS, or React/Next.js unless explicitly instructed by the user. Keep all code vanilla and static.
+2. Maintain Section IDs & Class Hooks:
+   - Section IDs (`#hero`, `#portfolio`, `#featured-projects`, `#contact`) MUST be preserved as they are actively monitored by the IntersectionObserver in script.js to highlight the floating navigation dock.
+   - Preserve JS class hooks: `.bento-item`, `.reveal-on-scroll`, `.nav-dock-item`, `#typewriter`, `#bubble-tagline`, `.project-card[data-expandable]`, `.project-details-btn`, `.carousel-container`, `.carousel-btn`, `.carousel-dot`.
+3. Design Aesthetics & Consistency:
+   - When adding new UI components, always utilize existing CSS variables from `:root` (`--bg-secondary`, `--primary-accent`, `--border-color`, `--glow-color`).
+   - Ensure all interactive elements (cards, buttons, links, tags) feature smooth hover states, subtle transforms, and glowing box-shadows to maintain the rich cyber aesthetic.
+4. Responsive Integrity:
+   - Always verify layout behavior across desktop (>1024px), tablet (768px–1024px), and mobile (<768px).
+   - Ensure multi-column grids (Bento grid and Projects grid) gracefully collapse into single columns on smaller screens without horizontal overflow.
+5. Documentation Updates:
+   - If new sections, standalone pages, or major UI components are added, update this file (`PROJECT_CONTEXT_FOR_AI.txt`) and `README.md` to keep documentation accurate.

@@ -207,6 +207,86 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(rotateLine, 2600);
 });
 
+/* ── Project card expand / collapse ── */
+document.addEventListener('DOMContentLoaded', () => {
+    const expandableCards = document.querySelectorAll('.project-card[data-expandable]');
+    const MOBILE_BP = 768;
+
+    const collapseAll = (except) => {
+        expandableCards.forEach(card => {
+            if (card !== except && card.classList.contains('expanded')) {
+                card.classList.remove('expanded');
+            }
+        });
+    };
+
+    expandableCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Don't expand if clicking the navigation button or carousel controls
+            if (e.target.closest('.project-details-btn, .carousel-btn, .carousel-indicators')) return;
+            // Don't expand on mobile — cards already full-width
+            if (window.innerWidth <= MOBILE_BP) return;
+
+            collapseAll(card);
+            card.classList.toggle('expanded');
+        });
+    });
+
+    // Collapse expanded cards when viewport shrinks to mobile
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth <= MOBILE_BP) {
+                expandableCards.forEach(c => c.classList.remove('expanded'));
+            }
+        }, 150);
+    });
+});
+
+/* ── Interactive Image Carousel ── */
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.carousel-container').forEach(container => {
+        const track = container.querySelector('.carousel-track');
+        const slides = container.querySelectorAll('.carousel-slide');
+        const dots = container.querySelectorAll('.carousel-dot');
+        const prevBtn = container.querySelector('.carousel-btn-prev');
+        const nextBtn = container.querySelector('.carousel-btn-next');
+        let currentIndex = 0;
+
+        if (!track || !slides.length) return;
+
+        const goTo = (index) => {
+            currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+                dot.setAttribute('aria-current', i === currentIndex ? 'true' : 'false');
+            });
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+        };
+
+        prevBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goTo(currentIndex - 1);
+        });
+
+        nextBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goTo(currentIndex + 1);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goTo(i);
+            });
+        });
+    });
+});
+
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
         console.log('Portfolio fully optimized');

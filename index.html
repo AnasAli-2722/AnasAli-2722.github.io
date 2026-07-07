@@ -166,51 +166,109 @@
     <section class="selected-projects" id="featured-projects" aria-label="Featured projects showcase">
         <div class="selected-projects-header reveal-on-scroll" data-reveal-delay="60">
             <h2>Featured Projects</h2>
-            <p>Two flagship builds focused on performance, polish, and real-world usability.</p>
+            <p>Flagship builds focused on performance, polish, and real-world usability.</p>
         </div>
 
         <div class="projects-grid">
-            <article class="project-card reveal-on-scroll" data-reveal-delay="120">
-                <a href="projects/anas-space.html" class="project-image-link" aria-label="Open Anas Space project details">
-                    <div class="project-image-placeholder anas-space-image" aria-label="Anas Space dual-device mockup placeholder">
-                        <img src="assets/Anas_Space.png" alt="Anas Space project mockup" class="project-mockup-image">
+            <article class="project-card project-card-full reveal-on-scroll" data-reveal-delay="120">
+                <div class="project-split">
+                    <div class="project-split-content">
+                        <h3>Anas Space</h3>
+                        <p>A cross-platform desktop and mobile gallery application featuring high-performance local media synchronization, responsive rendering, and a clean modern visual language.</p>
+
+                        <div class="project-tech-pills">
+                            <span class="project-tech-tag">Flutter</span>
+                            <span class="project-tech-tag">C++</span>
+                            <span class="project-tech-tag">Desktop</span>
+                            <span class="project-tech-tag">Mobile</span>
+                        </div>
+
+                        <a href="projects/anas-space.html" class="project-details-btn" id="btn-anas-space">
+                            View Project Details
+                            <span class="btn-glow" aria-hidden="true"></span>
+                        </a>
                     </div>
-                </a>
+                    <div class="project-split-media">
+                        <div class="project-image-placeholder anas-space-image" aria-label="Anas Space screenshots">
+                            <div class="carousel-container carousel-landscape" aria-roledescription="carousel" aria-label="Anas Space project screenshots">
+                                <div class="carousel-track">
+                                    <div class="carousel-slide active" aria-roledescription="slide" aria-label="Slide 1 of 3">
+                                        <img src="assets/Anas_Space.png" alt="Anas Space - Main gallery view" class="carousel-slide-img">
+                                    </div>
+                                    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 2 of 3">
+                                        <div class="carousel-slide-placeholder">2</div>
+                                    </div>
+                                    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 3 of 3">
+                                        <div class="carousel-slide-placeholder">3</div>
+                                    </div>
+                                </div>
 
-                <div class="project-content">
-                    <h3>Anas Space</h3>
-                    <p>A cross-platform desktop and mobile gallery application featuring high-performance local media synchronization.</p>
+                                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                                </button>
+                                <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+                                </button>
 
-                    <div class="project-tech-pills">
-                        <span class="project-tech-tag">Flutter</span>
-                        <span class="project-tech-tag">C++</span>
-                        <span class="project-tech-tag">Desktop</span>
-                        <span class="project-tech-tag">Mobile</span>
+                                <div class="carousel-indicators" aria-label="Slide navigation">
+                                    <button class="carousel-dot active" aria-label="Go to slide 1" aria-current="true"></button>
+                                    <button class="carousel-dot" aria-label="Go to slide 2"></button>
+                                    <button class="carousel-dot" aria-label="Go to slide 3"></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <a href="projects/anas-space.html" class="project-action-link">Details <span aria-hidden="true">↗</span></a>
                 </div>
             </article>
 
-            <article class="project-card reveal-on-scroll" data-reveal-delay="180">
-                <a href="projects/we-two.html" class="project-image-link" aria-label="Open We Two project details">
-                    <div class="project-image-placeholder we-two-image" aria-label="We Two mobile mockup placeholder">
-                        <img src="assets/WE_Two.png" alt="We Two project mockup" class="project-mockup-image">
+            <article class="project-card reveal-on-scroll" data-reveal-delay="180" data-expandable="true">
+                <div class="project-split">
+                    <div class="project-split-media">
+                        <div class="project-image-placeholder we-two-image" aria-label="We Two screenshots">
+                            <div class="carousel-container carousel-portrait" aria-roledescription="carousel" aria-label="We Two project screenshots">
+                                <div class="carousel-track">
+                                    <div class="carousel-slide active" aria-roledescription="slide" aria-label="Slide 1 of 3">
+                                        <img src="assets/We_Two.png" alt="We Two - Chat interface" class="carousel-slide-img">
+                                    </div>
+                                    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 2 of 3">
+                                        <div class="carousel-slide-placeholder">2</div>
+                                    </div>
+                                    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 3 of 3">
+                                        <div class="carousel-slide-placeholder">3</div>
+                                    </div>
+                                </div>
+
+                                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                                </button>
+                                <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+                                </button>
+
+                                <div class="carousel-indicators" aria-label="Slide navigation">
+                                    <button class="carousel-dot active" aria-label="Go to slide 1" aria-current="true"></button>
+                                    <button class="carousel-dot" aria-label="Go to slide 2"></button>
+                                    <button class="carousel-dot" aria-label="Go to slide 3"></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                    <div class="project-split-content">
+                        <h3>We Two</h3>
+                        <p>A real-time, duo-messaging application featuring a custom theming engine, soft UI aesthetics, and instant local-state syncing.</p>
 
-                <div class="project-content">
-                    <h3>We Two</h3>
-                    <p>A real-time, duo-messaging application featuring a custom theming engine, soft UI aesthetics, and instant local-state syncing.</p>
+                        <div class="project-tech-pills">
+                            <span class="project-tech-tag">Flutter</span>
+                            <span class="project-tech-tag">Supabase</span>
+                            <span class="project-tech-tag">Real-Time</span>
+                            <span class="project-tech-tag">UI/UX</span>
+                        </div>
 
-                    <div class="project-tech-pills">
-                        <span class="project-tech-tag">Flutter</span>
-                        <span class="project-tech-tag">Supabase</span>
-                        <span class="project-tech-tag">Real-Time</span>
-                        <span class="project-tech-tag">UI/UX</span>
+                        <a href="projects/we-two.html" class="project-details-btn" id="btn-we-two">
+                            View Project Details
+                            <span class="btn-glow" aria-hidden="true"></span>
+                        </a>
                     </div>
-
-                    <a href="projects/we-two.html" class="project-action-link">Details <span aria-hidden="true">↗</span></a>
                 </div>
             </article>
         </div>
