@@ -31,16 +31,15 @@ Page & Layout Structure:
    - Right Side: Glowing greeting ("Assalamu Alaikum, I am Anas") and a terminal-style typewriter prompt cycling through "developer" and "designer".
 3. Bento Grid Section (#portfolio):
    - A modern 4-column CSS grid featuring glowing glassmorphism cards with staggered fade-in animations:
-     - Card 1: Project Highlight (Anas Space) with tech tags.
+     - Card 1: About Me (Anas Ali) featuring professional title, bio paragraph, and core skill tags.
      - Card 2: Live Freelancer & GitHub Stats Widget powered by a custom Web Component (<global-freelancer-live-stats-widget>).
      - Card 3: Freelance Services list with interactive hover arrows and a "Get In Touch" CTA button.
      - Card 4: Interactive dual auto-scrolling Tech Stack Marquee (normal and reverse tracks) with glowing technology pills and SVG icons.
 4. Featured Projects Section (#featured-projects):
-   - Two-Tier Layout Hierarchy:
-     - Tier 1 (Hero Card): Dev Pulse sits permanently at the top of the grid (`grid-column: 1 / -1`, class `.project-card-hero`) with a horizontal split-pane design (Text/Tags/Button on the left, wide 16:9 carousel on the right).
-     - Tier 2 (Secondary Cards): Anas Space and We Two sit underneath in a 2-column grid. By default, they render in a compact stacked layout (Image on top, Text below). Clicking anywhere on a Tier 2 card (except buttons or carousel controls) smoothly expands it to span `grid-column: 1 / -1` and morphs its layout into a horizontal split-pane matching Dev Pulse.
+   - Full-Width Horizontal Layout Hierarchy:
+     - All project cards (Dev Pulse, Anas Space, We Two) permanently span the full horizontal grid width (`grid-column: 1 / -1`, class `.project-card-hero` or `.project-card-full`) in a horizontal split-pane design (alternating content/media left and right).
    - All cards feature interactive Vanilla JS Image Carousels (`.carousel-container`) with aspect-ratio-aware containers (`.carousel-landscape` 16:9, `.carousel-portrait` 9:16), semantic SVG navigation chevrons, and empty pagination dot indicators (`.dot`). Anas Space displays a single image without carousel navigation controls. We Two (mobile app) wraps its portrait carousel inside a `.mobile-mockup-frame` container to render as a scaled-down rounded mobile device mockup with a bezel and camera notch. Raw screenshots are styled with a 12px border-radius, subtle cyan border, and soft box-shadow glow.
-   - Expand/collapse is disabled on mobile (≤768px) where cards already stack full-width.
+   - On mobile screens (≤768px), cards smoothly stack vertically with the image/mockup positioned cleanly on top and content below.
 5. Contact Section (#contact):
    - Clean call-to-action ("Let's Create Something") with outlined neon buttons for Email, LinkedIn, GitHub, and Fiverr.
 6. Floating Bottom Navigation Dock (.nav-dock):
@@ -97,7 +96,7 @@ Use this directory to quickly locate and edit specific sections across HTML, CSS
 - HTML Layout: index.html [Lines 57-164]
 - Bento Grid Container & Card Hover CSS: styles.css [Lines 397-456]
 - Grid Positioning & Content Typography: styles.css [Lines 457-516]
-- Bento Card 1 (Anas Space Highlight): index.html [Lines 58-69] | styles.css [Lines 457-460, 517-538 for tags]
+- Bento Card 1 (About Me — Anas Ali): index.html [Lines 58-69] | styles.css [Lines 457-460, 517-538 for tags]
 - Bento Card 2 (Live Stats Widget): index.html [Lines 71-75] | styles.css [Lines 462-473] | Logic in global-freelancer-live-stats-widget.js
 - Bento Card 3 (Freelance Services & CTA): index.html [Lines 77-88] | styles.css [Lines 474-477, 579-630 for list and button]
 - Bento Card 4 (Tech Stack Marquee): index.html [Lines 90-163] | styles.css [Lines 479-482, 632-784 for scrolling marquee & pills]
@@ -105,16 +104,15 @@ Use this directory to quickly locate and edit specific sections across HTML, CSS
 --- D. FEATURED PROJECTS SECTION (#featured-projects) ---
 - HTML Layout: index.html [Lines 172-330]
 - Section Container & Header CSS: styles.css [Lines 785-806]
-- Projects Grid & Card Base: styles.css [Lines 808-830] (.projects-grid, .project-card, .project-card[data-expandable])
-- Full-Width Hero Card (.project-card-hero, .project-card-full): styles.css [Lines 839-844] (grid-column: 1 / -1)
-- Split Layout System: styles.css [Lines 846-910] (.project-split, .project-split-content, .project-split-media)
-- Interactive Image Carousels & Mobile Mockup: styles.css [Lines 960-1080] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .dot, .carousel-dot, .mobile-mockup-frame for We Two)
+- Projects Grid & Card Base: styles.css [Lines 808-830] (.projects-grid, .project-card — 1fr grid, all cards span full width)
+- Split Layout System: styles.css [Lines 840-900] (.project-split, .project-split-content, .project-split-media — horizontal row by default)
+- Interactive Image Carousels & Mobile Mockup: styles.css [Lines 930-1050] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .dot, .carousel-dot, .mobile-mockup-frame for We Two)
 - Image Placeholders & Custom Gradients: styles.css (.anas-space-image, .we-two-image, .dev-pulse-image)
 - "View Project Details" Button: styles.css (.project-details-btn with neon glow sweep via .btn-glow)
-- Expanded State for Secondary Cards: styles.css (.project-card.expanded — grid-column: 1 / -1, flex-direction: row, expandFadeIn animation)
-- Expand/Collapse & Carousel JS Logic: script.js [Lines 210-290] (click toggle, auto-collapse, carousel slider engine)
-- Project Card 1 (Dev Pulse — Tier 1 Hero): index.html (class: .project-card-hero, links to projects/dev-pulse.html)
-- Project Cards 2–3 (Anas Space, We Two — Tier 2 Expandable): index.html (data-expandable="true", links to detail pages)
+- Carousel JS Logic: script.js [Lines 210-250] (carousel slider engine)
+- Project Card 1 (Dev Pulse): index.html (class: .project-card-hero, Content Left / Media Right)
+- Project Card 2 (Anas Space): index.html (class: .project-card-full, Media Left / Content Right)
+- Project Card 3 (We Two): index.html (class: .project-card-full, Content Left / Media Right)
 
 --- E. PROJECT DETAIL PAGES (projects/*.html) ---
 - HTML Layouts: projects/anas-space.html [Lines 1-64] | projects/we-two.html [Lines 1-64]
@@ -167,19 +165,22 @@ How to Add or Modify a Bento Card:
 5) DEEP DIVE: HOW TO EDIT FEATURED PROJECTS (#featured-projects)
 ==================================================
 
-The Featured Projects section uses a TWO-TIER HIERARCHY:
-- Tier 1 Hero Card (.project-card-hero): Permanently sits at the top of the grid (`grid-column: 1 / -1`) with a horizontal split design (Dev Pulse).
-- Tier 2 Secondary Cards (data-expandable="true"): Sit below in a 2-column grid in compact stacked view (Anas Space, We Two). Clicking anywhere on the card body smoothly expands it to span `grid-column: 1 / -1` and morphs into a horizontal split-pane layout matching Dev Pulse.
+The Featured Projects section uses a FULL-WIDTH HORIZONTAL LAYOUT HIERARCHY:
+- Every project card (.project-card-hero, .project-card-full) permanently sits full width across the grid (`grid-column: 1 / -1`) with a horizontal split-pane design.
+- To create a dynamic visual rhythm, the cards alternate their layout order:
+  - Dev Pulse: Content Left | Media Right
+  - Anas Space: Media Left | Content Right
+  - We Two: Content Left | Media Right
 
 Card Architecture:
 Every project card contains a `.project-split` flex container with two children:
 - `.project-split-content`: Title, description, tech tags, and a `<a class="project-details-btn">` button.
 - `.project-split-media`: Image placeholder with gradient background holding an interactive `.carousel-container` (or wrapped in `.mobile-mockup-frame` for mobile apps like We Two).
 
-How to Add a New Tier 2 Expandable Project Card with Carousel:
+How to Add a New Full-Width Project Card with Carousel:
 1. In index.html inside `<div class="projects-grid">`, add:
    ```html
-   <article class="project-card reveal-on-scroll" data-reveal-delay="360" data-expandable="true">
+   <article class="project-card project-card-full reveal-on-scroll" data-reveal-delay="300">
        <div class="project-split">
            <div class="project-split-media">
                <div class="project-image-placeholder your-project-image">
