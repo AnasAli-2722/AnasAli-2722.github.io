@@ -38,8 +38,8 @@ Page & Layout Structure:
 4. Featured Projects Section (#featured-projects):
    - Two-Tier Layout Hierarchy:
      - Tier 1 (Hero Card): Dev Pulse sits permanently at the top of the grid (`grid-column: 1 / -1`, class `.project-card-hero`) with a horizontal split-pane design (Text/Tags/Button on the left, wide 16:9 carousel on the right).
-     - Tier 2 (Secondary Cards): Anas Space, We Two, and Blur sit underneath in a 2-column grid. By default, they render in a compact stacked layout (Image on top, Text below). Clicking anywhere on a Tier 2 card (except buttons or carousel controls) smoothly expands it to span `grid-column: 1 / -1` and morphs its layout into a horizontal split-pane matching Dev Pulse.
-   - All cards feature interactive Vanilla JS Image Carousels (`.carousel-container`) with aspect-ratio-aware containers (`.carousel-landscape` 16:9, `.carousel-portrait` 9:16), semantic SVG navigation chevrons, and empty pagination dot indicators (`.dot`). Raw screenshots are styled with a 12px border-radius, subtle cyan border, and soft box-shadow glow.
+     - Tier 2 (Secondary Cards): Anas Space and We Two sit underneath in a 2-column grid. By default, they render in a compact stacked layout (Image on top, Text below). Clicking anywhere on a Tier 2 card (except buttons or carousel controls) smoothly expands it to span `grid-column: 1 / -1` and morphs its layout into a horizontal split-pane matching Dev Pulse.
+   - All cards feature interactive Vanilla JS Image Carousels (`.carousel-container`) with aspect-ratio-aware containers (`.carousel-landscape` 16:9, `.carousel-portrait` 9:16), semantic SVG navigation chevrons, and empty pagination dot indicators (`.dot`). Anas Space displays a single image without carousel navigation controls. We Two (mobile app) wraps its portrait carousel inside a `.mobile-mockup-frame` container to render as a scaled-down rounded mobile device mockup with a bezel and camera notch. Raw screenshots are styled with a 12px border-radius, subtle cyan border, and soft box-shadow glow.
    - Expand/collapse is disabled on mobile (≤768px) where cards already stack full-width.
 5. Contact Section (#contact):
    - Clean call-to-action ("Let's Create Something") with outlined neon buttons for Email, LinkedIn, GitHub, and Fiverr.
@@ -108,13 +108,13 @@ Use this directory to quickly locate and edit specific sections across HTML, CSS
 - Projects Grid & Card Base: styles.css [Lines 808-830] (.projects-grid, .project-card, .project-card[data-expandable])
 - Full-Width Hero Card (.project-card-hero, .project-card-full): styles.css [Lines 839-844] (grid-column: 1 / -1)
 - Split Layout System: styles.css [Lines 846-910] (.project-split, .project-split-content, .project-split-media)
-- Interactive Image Carousels: styles.css [Lines 960-1080] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .dot, .carousel-dot, aspect ratio classes)
-- Image Placeholders & Custom Gradients: styles.css (.anas-space-image, .we-two-image, .dev-pulse-image, .blur-image)
+- Interactive Image Carousels & Mobile Mockup: styles.css [Lines 960-1080] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .dot, .carousel-dot, .mobile-mockup-frame for We Two)
+- Image Placeholders & Custom Gradients: styles.css (.anas-space-image, .we-two-image, .dev-pulse-image)
 - "View Project Details" Button: styles.css (.project-details-btn with neon glow sweep via .btn-glow)
 - Expanded State for Secondary Cards: styles.css (.project-card.expanded — grid-column: 1 / -1, flex-direction: row, expandFadeIn animation)
 - Expand/Collapse & Carousel JS Logic: script.js [Lines 210-290] (click toggle, auto-collapse, carousel slider engine)
 - Project Card 1 (Dev Pulse — Tier 1 Hero): index.html (class: .project-card-hero, links to projects/dev-pulse.html)
-- Project Cards 2–4 (Anas Space, We Two, Blur — Tier 2 Expandable): index.html (data-expandable="true", links to detail pages)
+- Project Cards 2–3 (Anas Space, We Two — Tier 2 Expandable): index.html (data-expandable="true", links to detail pages)
 
 --- E. PROJECT DETAIL PAGES (projects/*.html) ---
 - HTML Layouts: projects/anas-space.html [Lines 1-64] | projects/we-two.html [Lines 1-64]
@@ -169,12 +169,12 @@ How to Add or Modify a Bento Card:
 
 The Featured Projects section uses a TWO-TIER HIERARCHY:
 - Tier 1 Hero Card (.project-card-hero): Permanently sits at the top of the grid (`grid-column: 1 / -1`) with a horizontal split design (Dev Pulse).
-- Tier 2 Secondary Cards (data-expandable="true"): Sit below in a 2-column grid in compact stacked view (Anas Space, We Two, Blur). Clicking anywhere on the card body smoothly expands it to span `grid-column: 1 / -1` and morphs into a horizontal split-pane layout matching Dev Pulse.
+- Tier 2 Secondary Cards (data-expandable="true"): Sit below in a 2-column grid in compact stacked view (Anas Space, We Two). Clicking anywhere on the card body smoothly expands it to span `grid-column: 1 / -1` and morphs into a horizontal split-pane layout matching Dev Pulse.
 
 Card Architecture:
 Every project card contains a `.project-split` flex container with two children:
 - `.project-split-content`: Title, description, tech tags, and a `<a class="project-details-btn">` button.
-- `.project-split-media`: Image placeholder with gradient background holding an interactive `.carousel-container`.
+- `.project-split-media`: Image placeholder with gradient background holding an interactive `.carousel-container` (or wrapped in `.mobile-mockup-frame` for mobile apps like We Two).
 
 How to Add a New Tier 2 Expandable Project Card with Carousel:
 1. In index.html inside `<div class="projects-grid">`, add:
