@@ -807,8 +807,8 @@ global-freelancer-live-stats-widget {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 32px;
 }
 
 .project-card {
@@ -817,8 +817,8 @@ global-freelancer-live-stats-widget {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
-    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease,
-                grid-column 0s;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    grid-column: 1 / -1;
 }
 
 .project-card:hover {
@@ -827,36 +827,12 @@ global-freelancer-live-stats-widget {
     transform: translateY(-6px) scale(1.01);
 }
 
-/* Expandable cards get a subtle pointer hint */
-.project-card[data-expandable] {
-    cursor: pointer;
-}
-
-.project-card[data-expandable]:hover {
-    border-color: rgba(59, 197, 181, 0.6);
-}
-
-/* ── Full-width hero card & expanded cards ── */
-.project-card-hero,
-.project-card-full,
-.project-card.expanded {
-    grid-column: 1 / -1;
-}
-
 /* ── Split layout container ── */
 .project-split {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: flex-direction 0s;
-}
-
-/* Full-width / Hero / Expanded card: horizontal split */
-.project-card-hero .project-split,
-.project-card-full .project-split,
-.project-card.expanded .project-split {
     flex-direction: row;
     align-items: stretch;
+    height: 100%;
 }
 
 /* ── Split content (text side) ── */
@@ -864,31 +840,16 @@ global-freelancer-live-stats-widget {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 28px 24px;
-    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity, transform;
-}
-
-.project-card-hero .project-split-content,
-.project-card-full .project-split-content,
-.project-card.expanded .project-split-content {
-    flex: 0 0 45%;
     padding: 36px 32px;
+    flex: 0 0 45%;
 }
 
 .project-split-content h3 {
     font-family: 'Orbitron', sans-serif;
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.project-card-hero .project-split-content h3,
-.project-card-full .project-split-content h3,
-.project-card.expanded .project-split-content h3 {
     font-size: clamp(1.2rem, 2.2vw, 1.65rem);
     margin-bottom: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .project-split-content p {
@@ -900,30 +861,7 @@ global-freelancer-live-stats-widget {
 
 /* ── Split media (image side) ── */
 .project-split-media {
-    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity, transform;
-}
-
-.project-card-hero .project-split-media,
-.project-card-full .project-split-media,
-.project-card.expanded .project-split-media {
     flex: 0 0 55%;
-}
-
-@keyframes expandFadeIn {
-    from {
-        opacity: 0.6;
-        transform: scale(0.99);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.project-card.expanded .project-split-content,
-.project-card.expanded .project-split-media {
-    animation: expandFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .project-image-placeholder {
@@ -1746,13 +1684,8 @@ global-freelancer-live-stats-widget {
         grid-template-columns: 1fr;
     }
 
-    .project-card-full .project-split-content,
-    .project-card.expanded .project-split-content {
-        flex: 0 0 50%;
-    }
-
-    .project-card-full .project-split-media,
-    .project-card.expanded .project-split-media {
+    .project-split-content,
+    .project-split-media {
         flex: 0 0 50%;
     }
 
@@ -1876,34 +1809,22 @@ global-freelancer-live-stats-widget {
     }
 
     /* Force all project cards to stacked column on mobile */
-    .project-card-hero .project-split,
-    .project-card-full .project-split,
-    .project-card.expanded .project-split {
+    .project-split {
         flex-direction: column;
     }
 
-    .project-card-hero .project-split-content,
-    .project-card-hero .project-split-media,
-    .project-card-full .project-split-content,
-    .project-card-full .project-split-media,
-    .project-card.expanded .project-split-content,
-    .project-card.expanded .project-split-media {
+    .project-split-content,
+    .project-split-media {
         flex: 1 1 auto;
     }
 
-    .project-card-hero .project-split-content,
-    .project-card-full .project-split-content,
-    .project-card.expanded .project-split-content {
+    .project-split-media {
+        order: -1;
+    }
+
+    .project-split-content {
         padding: 24px 16px;
-        order: unset;
-    }
-
-    .project-card.expanded .project-split-media {
-        order: unset;
-    }
-
-    .project-card[data-expandable] {
-        cursor: default;
+        order: 1;
     }
 
     /* Carousel mobile adjustments */

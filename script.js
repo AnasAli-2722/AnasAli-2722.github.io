@@ -207,43 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(rotateLine, 2600);
 });
 
-/* ── Project card expand / collapse ── */
-document.addEventListener('DOMContentLoaded', () => {
-    const expandableCards = document.querySelectorAll('.project-card[data-expandable]');
-    const MOBILE_BP = 768;
-
-    const collapseAll = (except) => {
-        expandableCards.forEach(card => {
-            if (card !== except && card.classList.contains('expanded')) {
-                card.classList.remove('expanded');
-            }
-        });
-    };
-
-    expandableCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Don't expand if clicking the navigation button or carousel controls
-            if (e.target.closest('.project-details-btn, .carousel-btn, .carousel-indicators, .dot, .carousel-dot')) return;
-            // Don't expand on mobile — cards already full-width
-            if (window.innerWidth <= MOBILE_BP) return;
-
-            collapseAll(card);
-            card.classList.toggle('expanded');
-        });
-    });
-
-    // Collapse expanded cards when viewport shrinks to mobile
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            if (window.innerWidth <= MOBILE_BP) {
-                expandableCards.forEach(c => c.classList.remove('expanded'));
-            }
-        }, 150);
-    });
-});
-
 /* ── Interactive Image Carousel ── */
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.carousel-container').forEach(container => {
