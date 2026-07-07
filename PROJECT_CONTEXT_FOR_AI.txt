@@ -36,10 +36,10 @@ Page & Layout Structure:
      - Card 3: Freelance Services list with interactive hover arrows and a "Get In Touch" CTA button.
      - Card 4: Interactive dual auto-scrolling Tech Stack Marquee (normal and reverse tracks) with glowing technology pills and SVG icons.
 4. Featured Projects Section (#featured-projects):
-   - Mixed-layout grid with two card types:
-     - Full-Width Hero Card (Anas Space): Spans the entire grid width with a horizontal split design — text content, tech tags, and a neon "View Project Details" button on the left (45%), device mockup image on the right (55%).
-     - Standard Expandable Card (We Two): Sits in the 2-column grid. Clicking anywhere on the card (except the button or carousel controls) smoothly expands it to full-width with the same split layout. Click again to collapse.
-   - All cards feature interactive Vanilla JS Image Carousels (`.carousel-container`) with aspect-ratio-aware containers (`.carousel-landscape` 16:9 for Anas Space, `.carousel-portrait` 9:16 for We Two), glassmorphism navigation arrows, and pill-expanding pagination dots.
+   - Two-Tier Layout Hierarchy:
+     - Tier 1 (Hero Card): Dev Pulse sits permanently at the top of the grid (`grid-column: 1 / -1`, class `.project-card-hero`) with a horizontal split-pane design (Text/Tags/Button on the left, wide 16:9 carousel on the right).
+     - Tier 2 (Secondary Cards): Anas Space, We Two, and Blur sit underneath in a 2-column grid. By default, they render in a compact stacked layout (Image on top, Text below). Clicking anywhere on a Tier 2 card (except buttons or carousel controls) smoothly expands it to span `grid-column: 1 / -1` and morphs its layout into a horizontal split-pane matching Dev Pulse.
+   - All cards feature interactive Vanilla JS Image Carousels (`.carousel-container`) with aspect-ratio-aware containers (`.carousel-landscape` 16:9, `.carousel-portrait` 9:16), semantic SVG navigation chevrons, and empty pagination dot indicators (`.dot`). Raw screenshots are styled with a 12px border-radius, subtle cyan border, and soft box-shadow glow.
    - Expand/collapse is disabled on mobile (≤768px) where cards already stack full-width.
 5. Contact Section (#contact):
    - Clean call-to-action ("Let's Create Something") with outlined neon buttons for Email, LinkedIn, GitHub, and Fiverr.
@@ -103,18 +103,18 @@ Use this directory to quickly locate and edit specific sections across HTML, CSS
 - Bento Card 4 (Tech Stack Marquee): index.html [Lines 90-163] | styles.css [Lines 479-482, 632-784 for scrolling marquee & pills]
 
 --- D. FEATURED PROJECTS SECTION (#featured-projects) ---
-- HTML Layout: index.html [Lines 166-225]
+- HTML Layout: index.html [Lines 172-330]
 - Section Container & Header CSS: styles.css [Lines 785-806]
 - Projects Grid & Card Base: styles.css [Lines 808-830] (.projects-grid, .project-card, .project-card[data-expandable])
-- Full-Width Hero Card (.project-card-full): styles.css [Lines 833-835] (grid-column: 1 / -1)
-- Split Layout System: styles.css [Lines 837-907] (.project-split, .project-split-content, .project-split-media)
-- Interactive Image Carousels: styles.css [Lines 960-1080] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .carousel-dot, aspect ratio classes)
-- Image Placeholders & Custom Gradients: styles.css (.anas-space-image, .we-two-image)
+- Full-Width Hero Card (.project-card-hero, .project-card-full): styles.css [Lines 839-844] (grid-column: 1 / -1)
+- Split Layout System: styles.css [Lines 846-910] (.project-split, .project-split-content, .project-split-media)
+- Interactive Image Carousels: styles.css [Lines 960-1080] (.carousel-container, .carousel-track, .carousel-slide, .carousel-btn, .dot, .carousel-dot, aspect ratio classes)
+- Image Placeholders & Custom Gradients: styles.css (.anas-space-image, .we-two-image, .dev-pulse-image, .blur-image)
 - "View Project Details" Button: styles.css (.project-details-btn with neon glow sweep via .btn-glow)
-- Expanded State for Standard Cards: styles.css (.project-card.expanded — grid-column: 1 / -1, flex-direction: row)
-- Expand/Collapse & Carousel JS Logic: script.js [Lines 210-295] (click toggle, auto-collapse, carousel slider engine)
-- Project Card 1 (Anas Space — Full-Width Hero): index.html (class: .project-card-full, links to projects/anas-space.html)
-- Project Card 2 (We Two — Standard Expandable): index.html (data-expandable="true", links to projects/we-two.html)
+- Expanded State for Secondary Cards: styles.css (.project-card.expanded — grid-column: 1 / -1, flex-direction: row, expandFadeIn animation)
+- Expand/Collapse & Carousel JS Logic: script.js [Lines 210-290] (click toggle, auto-collapse, carousel slider engine)
+- Project Card 1 (Dev Pulse — Tier 1 Hero): index.html (class: .project-card-hero, links to projects/dev-pulse.html)
+- Project Cards 2–4 (Anas Space, We Two, Blur — Tier 2 Expandable): index.html (data-expandable="true", links to detail pages)
 
 --- E. PROJECT DETAIL PAGES (projects/*.html) ---
 - HTML Layouts: projects/anas-space.html [Lines 1-64] | projects/we-two.html [Lines 1-64]
@@ -167,32 +167,32 @@ How to Add or Modify a Bento Card:
 5) DEEP DIVE: HOW TO EDIT FEATURED PROJECTS (#featured-projects)
 ==================================================
 
-The Featured Projects section uses a MIXED LAYOUT with two card types:
-- Full-Width Hero Card (.project-card-full): Permanently spans the full grid width with a horizontal split design.
-- Standard Expandable Card (data-expandable="true"): Lives in the 2-column grid but expands to full-width on click.
+The Featured Projects section uses a TWO-TIER HIERARCHY:
+- Tier 1 Hero Card (.project-card-hero): Permanently sits at the top of the grid (`grid-column: 1 / -1`) with a horizontal split design (Dev Pulse).
+- Tier 2 Secondary Cards (data-expandable="true"): Sit below in a 2-column grid in compact stacked view (Anas Space, We Two, Blur). Clicking anywhere on the card body smoothly expands it to span `grid-column: 1 / -1` and morphs into a horizontal split-pane layout matching Dev Pulse.
 
 Card Architecture:
 Every project card contains a `.project-split` flex container with two children:
 - `.project-split-content`: Title, description, tech tags, and a `<a class="project-details-btn">` button.
 - `.project-split-media`: Image placeholder with gradient background holding an interactive `.carousel-container`.
 
-How to Add a New Standard (Expandable) Project Card with Carousel:
+How to Add a New Tier 2 Expandable Project Card with Carousel:
 1. In index.html inside `<div class="projects-grid">`, add:
    ```html
-   <article class="project-card reveal-on-scroll" data-reveal-delay="240" data-expandable="true">
+   <article class="project-card reveal-on-scroll" data-reveal-delay="360" data-expandable="true">
        <div class="project-split">
            <div class="project-split-media">
                <div class="project-image-placeholder your-project-image">
                    <div class="carousel-container carousel-landscape" aria-roledescription="carousel">
                        <div class="carousel-track">
-                           <div class="carousel-slide active"><img src="assets/Your_Project.png" class="carousel-slide-img"></div>
-                           <div class="carousel-slide"><div class="carousel-slide-placeholder">2</div></div>
+                           <div class="carousel-slide active"><img src="assets/Your_Project/ss1.png" class="carousel-slide-img"></div>
+                           <div class="carousel-slide"><img src="assets/Your_Project/ss2.png" class="carousel-slide-img"></div>
                        </div>
                        <button class="carousel-btn carousel-btn-prev">...</button>
                        <button class="carousel-btn carousel-btn-next">...</button>
                        <div class="carousel-indicators">
-                           <button class="carousel-dot active"></button>
-                           <button class="carousel-dot"></button>
+                           <div class="dot active"></div>
+                           <div class="dot"></div>
                        </div>
                    </div>
                </div>

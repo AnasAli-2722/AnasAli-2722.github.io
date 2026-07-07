@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     expandableCards.forEach(card => {
         card.addEventListener('click', (e) => {
             // Don't expand if clicking the navigation button or carousel controls
-            if (e.target.closest('.project-details-btn, .carousel-btn, .carousel-indicators')) return;
+            if (e.target.closest('.project-details-btn, .carousel-btn, .carousel-indicators, .dot, .carousel-dot')) return;
             // Don't expand on mobile — cards already full-width
             if (window.innerWidth <= MOBILE_BP) return;
 
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.carousel-container').forEach(container => {
         const track = container.querySelector('.carousel-track');
         const slides = container.querySelectorAll('.carousel-slide');
-        const dots = container.querySelectorAll('.carousel-dot');
+        const dots = container.querySelectorAll('.dot, .carousel-dot');
         const prevBtn = container.querySelector('.carousel-btn-prev');
         const nextBtn = container.querySelector('.carousel-btn-next');
         let currentIndex = 0;

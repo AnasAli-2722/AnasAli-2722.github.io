@@ -836,8 +836,10 @@ global-freelancer-live-stats-widget {
     border-color: rgba(59, 197, 181, 0.6);
 }
 
-/* ── Full-width hero card ── */
-.project-card-full {
+/* ── Full-width hero card & expanded cards ── */
+.project-card-hero,
+.project-card-full,
+.project-card.expanded {
     grid-column: 1 / -1;
 }
 
@@ -849,8 +851,10 @@ global-freelancer-live-stats-widget {
     transition: flex-direction 0s;
 }
 
-/* Full-width card: horizontal split */
-.project-card-full .project-split {
+/* Full-width / Hero / Expanded card: horizontal split */
+.project-card-hero .project-split,
+.project-card-full .project-split,
+.project-card.expanded .project-split {
     flex-direction: row;
     align-items: stretch;
 }
@@ -865,7 +869,9 @@ global-freelancer-live-stats-widget {
     will-change: opacity, transform;
 }
 
-.project-card-full .project-split-content {
+.project-card-hero .project-split-content,
+.project-card-full .project-split-content,
+.project-card.expanded .project-split-content {
     flex: 0 0 45%;
     padding: 36px 32px;
 }
@@ -878,7 +884,9 @@ global-freelancer-live-stats-widget {
     text-transform: uppercase;
 }
 
-.project-card-full .project-split-content h3 {
+.project-card-hero .project-split-content h3,
+.project-card-full .project-split-content h3,
+.project-card.expanded .project-split-content h3 {
     font-size: clamp(1.2rem, 2.2vw, 1.65rem);
     margin-bottom: 14px;
 }
@@ -896,8 +904,26 @@ global-freelancer-live-stats-widget {
     will-change: opacity, transform;
 }
 
-.project-card-full .project-split-media {
+.project-card-hero .project-split-media,
+.project-card-full .project-split-media,
+.project-card.expanded .project-split-media {
     flex: 0 0 55%;
+}
+
+@keyframes expandFadeIn {
+    from {
+        opacity: 0.6;
+        transform: scale(0.99);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.project-card.expanded .project-split-content,
+.project-card.expanded .project-split-media {
+    animation: expandFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .project-image-placeholder {
@@ -915,7 +941,9 @@ global-freelancer-live-stats-widget {
     transform: scale(1.03);
 }
 
-.project-card-full .project-image-placeholder {
+.project-card-hero .project-image-placeholder,
+.project-card-full .project-image-placeholder,
+.project-card.expanded .project-image-placeholder {
     min-height: 280px;
     height: 100%;
     border-radius: 0;
@@ -957,6 +985,20 @@ global-freelancer-live-stats-widget {
         linear-gradient(135deg, #18222c, #10161e);
 }
 
+.dev-pulse-image {
+    background:
+        linear-gradient(145deg, rgba(59, 197, 181, 0.22), transparent 60%),
+        radial-gradient(circle at 75% 25%, rgba(46, 157, 146, 0.28), transparent 50%),
+        linear-gradient(135deg, #16202a, #0f161e);
+}
+
+.blur-image {
+    background:
+        linear-gradient(160deg, rgba(59, 197, 181, 0.18), transparent 55%),
+        radial-gradient(circle at 20% 70%, rgba(46, 157, 146, 0.25), transparent 50%),
+        linear-gradient(140deg, #17212c, #10171f);
+}
+
 /* ── Interactive Image Carousel ── */
 .carousel-container {
     position: relative;
@@ -989,6 +1031,14 @@ global-freelancer-live-stats-widget {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(59, 197, 181, 0.3);
+    box-shadow: 0 8px 24px rgba(59, 197, 181, 0.15), 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover .carousel-slide-img {
+    box-shadow: 0 12px 32px rgba(59, 197, 181, 0.25), 0 6px 16px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-slide-placeholder {
@@ -1054,6 +1104,9 @@ global-freelancer-live-stats-widget {
     z-index: 3;
 }
 
+.carousel-indicators .dot,
+.carousel-indicators .carousel-dot,
+.dot,
 .carousel-dot {
     width: 8px;
     height: 8px;
@@ -1066,12 +1119,18 @@ global-freelancer-live-stats-widget {
                 background 0.3s ease, box-shadow 0.3s ease;
 }
 
+.carousel-indicators .dot.active,
+.carousel-indicators .carousel-dot.active,
+.dot.active,
 .carousel-dot.active {
     width: 24px;
-    background: rgba(231, 237, 244, 0.9);
-    box-shadow: 0 0 8px rgba(231, 237, 244, 0.3);
+    background: rgba(231, 237, 244, 0.95);
+    box-shadow: 0 0 10px rgba(59, 197, 181, 0.6);
 }
 
+.carousel-indicators .dot:hover:not(.active),
+.carousel-indicators .carousel-dot:hover:not(.active),
+.dot:hover:not(.active),
 .carousel-dot:hover:not(.active) {
     background: rgba(154, 168, 182, 0.8);
 }
@@ -1765,11 +1824,14 @@ global-freelancer-live-stats-widget {
     }
 
     /* Force all project cards to stacked column on mobile */
+    .project-card-hero .project-split,
     .project-card-full .project-split,
     .project-card.expanded .project-split {
         flex-direction: column;
     }
 
+    .project-card-hero .project-split-content,
+    .project-card-hero .project-split-media,
     .project-card-full .project-split-content,
     .project-card-full .project-split-media,
     .project-card.expanded .project-split-content,
@@ -1777,6 +1839,7 @@ global-freelancer-live-stats-widget {
         flex: 1 1 auto;
     }
 
+    .project-card-hero .project-split-content,
     .project-card-full .project-split-content,
     .project-card.expanded .project-split-content {
         padding: 24px 16px;
