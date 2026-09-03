@@ -1,0 +1,12 @@
+# Environment & Secrets
+.env
+.env.*
+*.env
+
+# AI & Editor Context
+PROJECT_CONTEXT_FOR_AI.txt
+
+# Logs & OS Temp Files
+*.log
+.DS_Store
+Thumbs.db
