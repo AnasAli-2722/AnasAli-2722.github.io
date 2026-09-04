@@ -1,7 +1,8 @@
 const typewriterElement = document.getElementById('typewriter');
 const texts = [
-    'developer',
-    'designer'
+    'Apps',
+    'Websites',
+    'Games'
 ];
 let textIndex = 0;
 let charIndex = 0;
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lines = [
         'Building scalable Flutter apps',
         'Bringing Ideas to Life',
-        "Let\'s Build your Project",
+        "Let's Build your Project",
     ];
 
     let lineIndex = 0;
@@ -255,3 +256,32 @@ if ('requestIdleCallback' in window) {
         console.log('Portfolio fully optimized');
     });
 }
+
+/* ── Theme Toggle (Light/Dark) ── */
+document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.add('light');
+    }
+
+    toggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light');
+        localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+    });
+});
+
+/* ── Smooth scroll for all in-page anchor links (CTA buttons, etc.) ── */
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        if (anchor.classList.contains('nav-dock-item')) return; // already handled
+        anchor.addEventListener('click', (e) => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
