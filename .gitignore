@@ -10,3 +10,7 @@ PROJECT_CONTEXT_FOR_AI.txt
 *.log
 .DS_Store
 Thumbs.db
+
+# IDE
+*.code-workspace
+.vscode/

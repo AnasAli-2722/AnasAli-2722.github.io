@@ -183,149 +183,115 @@
             <p>Flagship builds focused on performance, polish, and real-world usability.</p>
         </div>
 
+        <div class="project-filter-bar reveal-on-scroll" data-reveal-delay="80">
+            <button class="filter-btn active" data-filter="apps">Apps</button>
+            <button class="filter-btn" data-filter="websites">Websites</button>
+            <button class="filter-btn" data-filter="games">Games</button>
+        </div>
+
         <div class="projects-grid">
-            <!-- Tier 1: Hero Card (Dev Pulse) -->
-            <article class="project-card project-card-hero reveal-on-scroll" data-reveal-delay="120">
-                <div class="project-split">
-                    <div class="project-split-content">
-                        <h3>Dev Pulse</h3>
-                        <p>A real-time developer productivity and telemetry dashboard providing deep insights into coding habits, workflow rhythms, and project metrics.</p>
-
-                        <div class="project-tech-pills">
-                            <span class="project-tech-tag">Flutter</span>
-                            <span class="project-tech-tag">Analytics</span>
-                            <span class="project-tech-tag">Desktop</span>
-                            <span class="project-tech-tag">Telemetry</span>
-                        </div>
-
-                        <a href="projects/dev-pulse.html" class="project-details-btn" id="btn-dev-pulse">
-                            View Project Details
-                            <span class="btn-glow" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <div class="project-split-media">
-                        <div class="project-image-placeholder dev-pulse-image" aria-label="Dev Pulse screenshots">
-                            <div class="carousel-container carousel-landscape" aria-roledescription="carousel" aria-label="Dev Pulse project screenshots">
-                                <div class="carousel-track">
-                                    <div class="carousel-slide active" aria-roledescription="slide" aria-label="Slide 1 of 3">
-                                        <!-- REMINDER: Verify exact filename in /assets/ -->
-                                        <img src="assets/Dev Pulse/dev_pulse_ss_0.png" alt="Dev Pulse - Telemetry Dashboard" class="carousel-slide-img">
-                                    </div>
-                                    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 2 of 3">
-                                        <!-- REMINDER: Verify exact filename in /assets/ -->
-                                        <img src="assets/Dev Pulse/dev_pulse_ss_1.png" alt="Dev Pulse - Analytics View" class="carousel-slide-img">
-                                    </div>
-                                    <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 3 of 3">
-                                        <!-- REMINDER: Verify exact filename in /assets/ -->
-                                        <img src="assets/Dev Pulse/dev_pulse_ss_2.png" alt="Dev Pulse - Metrics Breakdown" class="carousel-slide-img">
-                                    </div>
-                                </div>
-
-                                <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                                </button>
-                                <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
-                                </button>
-
-                                <div class="carousel-indicators" aria-label="Slide navigation">
-                                    <div class="dot active" aria-label="Slide 1"></div>
-                                    <div class="dot" aria-label="Slide 2"></div>
-                                    <div class="dot" aria-label="Slide 3"></div>
-                                </div>
+            <!-- Website 1: Dev Pulse -->
+            <article class="project-layout-web project-item" data-category="websites" style="display: none;">
+                <h3 class="web-title">Dev Pulse</h3>
+                <div class="web-content">
+                    <div class="web-left">
+                        <div class="web-mockup-container" style="display: flex; justify-content: center;">
+                            <div class="browser-mockup-frame" style="width: 100%; max-width: 800px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                                <img src="assets/Dev Pulse/dev_pulse_ss_0.png" alt="Dev Pulse" style="width: 100%; height: auto; display: block;">
                             </div>
+                        </div>
+                    </div>
+                    <div class="web-right">
+                        <p class="project-subtitle" style="margin-bottom: 12px;">Analytics • Telemetry Dashboard</p>
+                        <div class="ref-tags">
+                            <span class="ref-tag">Flutter</span>
+                            <span class="ref-tag">Desktop</span>
+                        </div>
+                        <a href="projects/dev-pulse.html" class="ref-btn">View Work</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- App 2: Anas Space -->
+            <article class="project-layout-app project-item" data-category="apps">
+                <div class="app-left">
+                    <h3>Anas Space</h3>
+                    <p class="project-subtitle">Gallery • Media Sync</p>
+                    <div class="ref-tags">
+                        <span class="ref-tag">Flutter</span>
+                        <span class="ref-tag">C++</span>
+                    </div>
+                    <a href="projects/anas-space.html" class="ref-btn">View Work</a>
+                </div>
+                <div class="app-right">
+                    <div class="app-mockup-container">
+                        <img src="assets/Anas Space/Ss (2).png" alt="Anas Space" style="width: 100%; max-width: 500px; height: auto; display: block; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+            </article>
+
+            <!-- App 3: We Two -->
+            <article class="project-layout-app project-item" data-category="apps">
+                <div class="app-left">
+                    <h3>We Two</h3>
+                    <p class="project-subtitle">Duo-Messaging • Real-Time</p>
+                    <div class="ref-tags">
+                        <span class="ref-tag">Supabase</span>
+                        <span class="ref-tag">UI/UX</span>
+                    </div>
+                    <a href="projects/we-two.html" class="ref-btn">View Work</a>
+                </div>
+                <div class="app-right">
+                    <div class="app-mockup-container">
+                        <div class="mobile-mockup-frame">
+                            <img src="assets/We Two/SS.png" alt="We Two" style="width: 100%; height: auto; display: block; border-radius: 20px;">
                         </div>
                     </div>
                 </div>
             </article>
 
-            <!-- Project Card 2: Full-Width Horizontal (Anas Space) -->
-            <article class="project-card project-card-full reveal-on-scroll" data-reveal-delay="180">
-                <div class="project-split">
-                    <div class="project-split-media">
-                        <div class="project-image-placeholder anas-space-image" aria-label="Anas Space screenshot">
-                            <div class="carousel-container carousel-landscape" aria-label="Anas Space project screenshot">
-                                <div class="carousel-track">
-                                    <div class="carousel-slide active" aria-label="Slide 1 of 1">
-                                        <!-- REMINDER: Verify exact filename in /assets/ -->
-                                        <img src="assets/Anas Space/Ss (2).png" alt="Anas Space - Gallery View" class="carousel-slide-img">
-                                    </div>
-                                </div>
+            <!-- Website 1: Dummy -->
+            <article class="project-layout-web project-item" data-category="websites" style="display: none;">
+                <h3 class="web-title">The Client Command Center.</h3>
+                <div class="web-content">
+                    <div class="web-left">
+                        <div class="web-mockup-container">
+                            <div class="browser-mockup-frame" style="width: 100%; aspect-ratio: 16/9; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                                Website Mockup Image
                             </div>
                         </div>
                     </div>
-                    <div class="project-split-content">
-                        <h3>Anas Space</h3>
-                        <p>A cross-platform desktop and mobile gallery application featuring high-performance local media synchronization, responsive rendering, and a clean modern visual language.</p>
-
-                        <div class="project-tech-pills">
-                            <span class="project-tech-tag">Flutter</span>
-                            <span class="project-tech-tag">C++</span>
-                            <span class="project-tech-tag">Desktop</span>
-                            <span class="project-tech-tag">Mobile</span>
+                    <div class="web-right">
+                        <div class="ref-tags">
+                            <span class="ref-tag">2023 Fall</span>
+                            <span class="ref-tag">Dashboard</span>
+                            <span class="ref-tag">B2B</span>
+                            <span class="ref-tag">Client-facing</span>
+                            <span class="ref-tag">Rapid Prototyping</span>
                         </div>
-
-                        <a href="projects/anas-space.html" class="project-details-btn" id="btn-anas-space">
-                            View Project Details
-                            <span class="btn-glow" aria-hidden="true"></span>
-                        </a>
+                        <a href="#" class="ref-btn">View Work</a>
                     </div>
                 </div>
             </article>
 
-            <!-- Project Card 3: Full-Width Horizontal (We Two) -->
-            <article class="project-card project-card-full reveal-on-scroll" data-reveal-delay="240">
-                <div class="project-split">
-                    <div class="project-split-content">
-                        <h3>We Two</h3>
-                        <p>A real-time, duo-messaging application featuring a custom theming engine, soft UI aesthetics, and instant local-state syncing.</p>
-
-                        <div class="project-tech-pills">
-                            <span class="project-tech-tag">Flutter</span>
-                            <span class="project-tech-tag">Supabase</span>
-                            <span class="project-tech-tag">Real-Time</span>
-                            <span class="project-tech-tag">UI/UX</span>
-                        </div>
-
-                        <a href="projects/we-two.html" class="project-details-btn" id="btn-we-two">
-                            View Project Details
-                            <span class="btn-glow" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <div class="project-split-media">
-                        <div class="project-image-placeholder we-two-image" aria-label="We Two screenshots">
-                            <div class="mobile-mockup-frame" aria-label="We Two mobile mockup">
-                                <div class="carousel-container carousel-portrait" aria-roledescription="carousel" aria-label="We Two project screenshots">
-                                    <div class="carousel-track">
-                                        <div class="carousel-slide active" aria-roledescription="slide" aria-label="Slide 1 of 3">
-                                            <!-- REMINDER: Verify exact filename in /assets/ -->
-                                            <img src="assets/We Two/SS.png" alt="We Two - Chat Interface" class="carousel-slide-img">
-                                        </div>
-                                        <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 2 of 3">
-                                            <!-- REMINDER: Verify exact filename in /assets/ -->
-                                            <img src="assets/We Two/WhatsApp Image 2026-07-07 at 5.34.49 AM.jpeg" alt="We Two - Duo Messaging" class="carousel-slide-img">
-                                        </div>
-                                        <div class="carousel-slide" aria-roledescription="slide" aria-label="Slide 3 of 3">
-                                            <!-- REMINDER: Verify exact filename in /assets/ -->
-                                            <img src="assets/We Two/WhatsApp Image 2026-07-07 at 5.34.49 AM (1).jpeg" alt="We Two - Custom Theming" class="carousel-slide-img">
-                                        </div>
-                                    </div>
-
-                                    <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                                    </button>
-                                    <button class="carousel-btn carousel-btn-next" aria-label="Next slide">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
-                                    </button>
-
-                                    <div class="carousel-indicators" aria-label="Slide navigation">
-                                        <div class="dot active" aria-label="Slide 1"></div>
-                                        <div class="dot" aria-label="Slide 2"></div>
-                                        <div class="dot" aria-label="Slide 3"></div>
-                                    </div>
-                                </div>
+            <!-- Game 1: Dummy -->
+            <article class="project-layout-web project-item" data-category="games" style="display: none;">
+                <h3 class="web-title">Immersive 3D World.</h3>
+                <div class="web-content">
+                    <div class="web-left">
+                        <div class="web-mockup-container">
+                            <div class="browser-mockup-frame" style="width: 100%; aspect-ratio: 16/9; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                                Game Mockup Image
                             </div>
                         </div>
+                    </div>
+                    <div class="web-right">
+                        <div class="ref-tags">
+                            <span class="ref-tag">Unity</span>
+                            <span class="ref-tag">C#</span>
+                            <span class="ref-tag">Multiplayer</span>
+                        </div>
+                        <a href="#" class="ref-btn">View Work</a>
                     </div>
                 </div>
             </article>

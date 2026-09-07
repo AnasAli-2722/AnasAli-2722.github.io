@@ -259,12 +259,12 @@ if ('requestIdleCallback' in window) {
 
 /* ── Theme Toggle (Light/Dark) ── */
 document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('theme-toggle');
-    if (!toggle) return;
-
     if (localStorage.getItem('theme') === 'light') {
         document.documentElement.classList.add('light');
     }
+
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
 
     toggle.addEventListener('click', () => {
         document.documentElement.classList.toggle('light');
@@ -284,4 +284,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+});
+
+/* ── Project Filter Logic ── */
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-item');
+
+    if (filterBtns.length === 0 || projects.length === 0) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            projects.forEach(project => {
+                if (project.getAttribute('data-category') === filter) {
+                    project.style.display = '';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Ensure default state on load
+    const activeBtn = document.querySelector('.filter-btn.active');
+    if (activeBtn) {
+        const filter = activeBtn.getAttribute('data-filter');
+        projects.forEach(project => {
+            if (project.getAttribute('data-category') === filter) {
+                project.style.display = '';
+            } else {
+                project.style.display = 'none';
+            }
+        });
+    }
 });
