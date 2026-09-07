@@ -1666,7 +1666,11 @@ html.light .river-text { stroke: var(--text-main); }
 html.light .user-image-placeholder {
     background: linear-gradient(154deg, var(--bg-secondary) 0%, var(--bg-color) 62%, var(--bg-color) 100%);
     border-color: var(--border-color);
-    box-shadow: 8px 8px 24px rgba(var(--shadow-rgb),0.08), -6px -6px 16px rgba(255,255,255,0.9);
+    box-shadow: 22px 22px 50px rgba(0, 0, 0, 0.18), -14px -14px 30px rgba(255, 255, 255, 1);
+}
+
+html.light .user-image-container:hover .user-image-placeholder {
+    box-shadow: 0 0 0 1px var(--primary-accent), 26px 26px 58px rgba(0, 0, 0, 0.22), -16px -16px 36px rgba(255, 255, 255, 1);
 }
 
 html.light .bubble-name { color: var(--text-main); text-shadow: none; }
