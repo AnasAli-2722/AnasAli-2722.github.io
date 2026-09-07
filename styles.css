@@ -2496,43 +2496,6 @@ html.light .carousel-btn { background: var(--bg-secondary); border-color: var(--
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-    }
-
-    .nav-dock {
-        left: 10px;
-        right: 10px;
-        width: auto;
-        transform: none;
-        bottom: 10px;
-        padding: 10px;
-        gap: 6px;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        justify-content: initial;
-        overflow: visible;
-    }
-
-    .nav-dock-item {
-        white-space: normal;
-        min-width: 0;
-        padding: 8px 6px;
-        font-size: 10px;
-        letter-spacing: 0.45px;
-        text-align: center;
-    }
-
-    .nav-dock-cv {
-        grid-column: 1 / -1;
-    }
-
-    .contact-section {
-        padding: 64px 20px 152px;
-    }
-
-    .contact-section p {
-        margin-bottom: 26px;
-    }
-}
 
 @media (max-width: 480px) {
     .bento-grid {
