@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <nav class="top-bar" id="top-bar">
+        <a href="../index.html#hero" class="top-bar-logo">Anas Ali</a>
+        <div class="top-bar-links">
+            <a href="../index.html#portfolio" class="top-bar-link">Portfolio</a>
+            <a href="../index.html#featured-projects" class="top-bar-link">Projects</a>
+            <a href="../index.html#contact" class="top-bar-link">Contact</a>
+            <a href="../connect.html" class="top-bar-connect">Connect</a>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light mode">
+                <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+        </div>
+    </nav>
     <main class="project-detail-main">
         <section class="project-detail-hero">
             <a class="project-detail-back" href="../index.html#featured-projects">← Back to Featured Projects</a>
@@ -32,34 +45,53 @@
         <div class="case-study-layout">
             <div class="case-study-content">
                 <section id="section-overview" class="case-study-section">
-                    <h2 class="case-study-section-header">01. OVERVIEW</h2>
-                    <h3 class="case-study-subheader">What is Dev Pulse?</h3>
+                    <h2 class="case-study-section-header">01. OVERVIEW & CORE SCOPE</h2>
                     <p class="case-study-text">
-                        Dev Pulse is a <strong>real-time telemetry engine</strong> tracking coding sessions, keystrokes, and active project time. It features a rich analytics dashboard with charts, heatmaps, and streak tracking. Built as a cross-platform desktop application with Flutter, it utilizes a <strong>privacy-first architecture</strong> where all data is processed and stored locally.
+                        Dev Pulse is a cloud-native code snippet management and versioning platform engineered to modernize how software engineers store, organize, and discover production-ready code.<br><br>
+                        Built as an open-source full-stack web application, it bridges the gap between disposable, static pastebins and bloated version-control repositories.<br><br>
+                        The architecture pairs a responsive <strong>Next.js and React frontend</strong> with a scalable <strong>Supabase and PostgreSQL backend</strong>. The entire experience is styled using Tailwind CSS to deliver an interface focused on performance, developer ergonomics, and crisp code typography.
+                    </p>
+                </section>
+
+                <section id="section-problem" class="case-study-section">
+                    <h2 class="case-study-section-header">02. THE PROBLEM</h2>
+                    <p class="case-study-text">
+                        Modern software workflows suffer from fragmented code management. Developers frequently rewrite utility functions, boilerplate patterns, and complex database queries because traditional note-taking apps discard language context and syntax trees.<br><br>
+                        At the same time, legacy pastebins treat code as static, single-state text. Overwriting a snippet permanently destroys its previous working logic, while search functionality remains primitive.<br><br>
+                        Without structured categorization, version tracking, or community verification, engineers waste hours searching through scattered notes and forgotten repos for solutions they have already built.
                     </p>
                 </section>
 
                 <section id="section-preview" class="case-study-section">
-                    <h2 class="case-study-section-header">02. PREVIEW</h2>
-                    <img src="../assets/Dev Pulse/Dev_Pulse_home2.png" alt="Dev Pulse detailed preview" style="width: 100%; border-radius: 12px; margin-top: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                    <h2 class="case-study-section-header">03. PREVIEW</h2>
+                    <img src="../assets/Dev Pulse/Dev_Pulse_home2.png" alt="Dev Pulse detailed preview" style="width: 100%; margin-top: 24px; background-color: transparent;">
                 </section>
 
                 <section id="section-features" class="case-study-section">
-                    <h2 class="case-study-section-header">03. KEY FEATURES</h2>
+                    <h2 class="case-study-section-header">04. FEATURE ECOSYSTEM</h2>
                     <p class="case-study-text">
-                        <strong>Live Coding Session Monitoring</strong>: Real-time time tracking and activity logging.<br><br>
-                        <strong>Visual Workflow Rhythm Analysis</strong>: Gain insights from daily and weekly heatmaps.<br><br>
-                        <strong>Project-Level Metrics</strong>: Detailed breakdown and productivity scoring.<br><br>
-                        <strong>Customizable Dashboard</strong>: Telemetry interface with drag-and-drop widgets.
+                        Dev Pulse resolves these bottlenecks by combining structured code storage with an interactive developer hub. The discovery feed provides real-time multi-language filtering across JavaScript, TypeScript, Python, Rust, Go, and SQL, paired with dynamic sorting for newest, trending, and most-viewed entries.<br><br>
+                        Each snippet card features a syntax-highlighted preview linked directly to an iterative versioning engine. This allows users to track chronological revisions, compare changes, and review commit logs without leaving the browser.<br><br>
+                        Beyond individual utility, the platform introduces community telemetry. Developers curate public profiles showcasing reputation scores, star counts, follower networks, and contribution activity heatmaps. A dedicated settings workspace allows engineers to manage linked GitHub and LinkedIn accounts, adjust privacy rules, and configure workspace themes.
                     </p>
                 </section>
 
-                <section id="section-enhancements" class="case-study-section">
-                    <h2 class="case-study-section-header">04. ENHANCEMENTS</h2>
+                <section id="section-architecture" class="case-study-section">
+                    <h2 class="case-study-section-header">05. ARCHITECTURE & SECURITY</h2>
                     <p class="case-study-text">
-                        <strong>IDE Plugin Integrations</strong>: Extending support to VS Code and IntelliJ.<br><br>
-                        <strong>AI-Powered Insights</strong>: Automated productivity recommendations and workflow analysis.<br><br>
-                        <strong>Team Collaboration</strong>: Shared metrics and collaboration dashboards for teams.
+                        The platform's underlying architecture is built on a relational PostgreSQL database via Supabase, linking discrete schemas for user profiles, snippet records, version histories, and community interactions.<br><br>
+                        Authentication accommodates both Google OAuth and standard email credentials for frictionless developer onboarding.<br><br>
+                        Security is enforced directly at the database layer through PostgreSQL <strong>Row-Level Security (RLS)</strong> policies. These policies restrict modification and deletion rights strictly to verified snippet authors, while keeping public discovery feeds fast and accessible.<br><br>
+                        The user interface utilizes a deep emerald and obsidian dark theme, specifically tuned to reduce eye strain and preserve syntax token contrast during long coding sessions.
+                    </p>
+                </section>
+
+                <section id="section-retrospective" class="case-study-section">
+                    <h2 class="case-study-section-header">06. RETROSPECTIVE</h2>
+                    <p class="case-study-text">
+                        Engineering Dev Pulse highlighted the critical role of scalable relational modeling when dealing with iterative, multi-version assets.<br><br>
+                        Decoupling snapshot revisions into distinct relational entities preserved snappy feed queries while enabling seamless timeline rollbacks.<br><br>
+                        The final build delivers an efficient, community-backed workspace that treats reusable code snippets with the structure, permanence, and version integrity of production software.
                     </p>
                 </section>
             </div>
@@ -67,9 +99,11 @@
             <aside class="case-study-nav-container">
                 <nav class="case-study-nav">
                     <a href="#section-overview" class="case-study-nav-item active">Overview</a>
+                    <a href="#section-problem" class="case-study-nav-item">The Problem</a>
                     <a href="#section-preview" class="case-study-nav-item">Preview</a>
-                    <a href="#section-features" class="case-study-nav-item">Key Features</a>
-                    <a href="#section-enhancements" class="case-study-nav-item">Enhancements</a>
+                    <a href="#section-features" class="case-study-nav-item">Features</a>
+                    <a href="#section-architecture" class="case-study-nav-item">Architecture</a>
+                    <a href="#section-retrospective" class="case-study-nav-item">Retrospective</a>
                 </nav>
             </aside>
         </div>
@@ -101,5 +135,6 @@
             });
         });
     </script>
+    <script src="../script.js"></script>
 </body>
 </html>
