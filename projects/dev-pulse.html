@@ -18,48 +18,88 @@
             <h1 class="project-detail-title">Dev Pulse</h1>
             <p class="project-detail-description">A real-time developer productivity and telemetry dashboard providing deep insights into coding habits, workflow rhythms, and project metrics.</p>
             <div class="project-tech-pills" style="margin-top: 12px;">
-                <span class="project-tech-tag">Flutter</span>
-                <span class="project-tech-tag">Analytics</span>
-                <span class="project-tech-tag">Desktop</span>
-                <span class="project-tech-tag">Telemetry</span>
+                <span class="project-tech-tag">nextjs</span>
+                <span class="project-tech-tag">supabase</span>
+                <span class="project-tech-tag">postgresql</span>
+                <span class="project-tech-tag">code-snippets</span>
+                <span class="project-tech-tag">full-stack</span>
+                <span class="project-tech-tag">open-source</span>
+                <span class="project-tech-tag">react</span>
+                <span class="project-tech-tag">vercel</span>
             </div>
         </section>
 
-        <section class="project-detail-grid">
-            <article class="project-detail-card">
-                <h3>Overview</h3>
-                <ul class="project-detail-list">
-                    <li>Real-time telemetry engine tracking coding sessions, keystrokes, and active project time.</li>
-                    <li>Rich analytics dashboard with charts, heatmaps, and streak tracking.</li>
-                    <li>Cross-platform desktop application built with Flutter for Windows, macOS, and Linux.</li>
-                    <li>Privacy-first architecture — all data processed and stored locally.</li>
-                </ul>
-            </article>
+        <div class="case-study-layout">
+            <div class="case-study-content">
+                <section id="section-overview" class="case-study-section">
+                    <h2 class="case-study-section-header">01. OVERVIEW</h2>
+                    <h3 class="case-study-subheader">What is Dev Pulse?</h3>
+                    <p class="case-study-text">
+                        Dev Pulse is a <strong>real-time telemetry engine</strong> tracking coding sessions, keystrokes, and active project time. It features a rich analytics dashboard with charts, heatmaps, and streak tracking. Built as a cross-platform desktop application with Flutter, it utilizes a <strong>privacy-first architecture</strong> where all data is processed and stored locally.
+                    </p>
+                </section>
 
-            <article class="project-detail-card">
-                <h3>Preview</h3>
-                <img src="../assets/Dev Pulse/dev_pulse_ss_0.png" alt="Dev Pulse detailed preview" class="project-detail-preview">
-            </article>
+                <section id="section-preview" class="case-study-section">
+                    <h2 class="case-study-section-header">02. PREVIEW</h2>
+                    <img src="../assets/Dev Pulse/Dev_Pulse_home2.png" alt="Dev Pulse detailed preview" style="width: 100%; border-radius: 12px; margin-top: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.15);">
+                </section>
 
-            <article class="project-detail-card">
-                <h3>Key Features</h3>
-                <ul class="project-detail-list">
-                    <li>Live coding session monitoring and time tracking.</li>
-                    <li>Visual workflow rhythm analysis with daily and weekly heatmaps.</li>
-                    <li>Project-level metrics breakdown and productivity scoring.</li>
-                    <li>Customizable telemetry dashboard with drag-and-drop widgets.</li>
-                </ul>
-            </article>
+                <section id="section-features" class="case-study-section">
+                    <h2 class="case-study-section-header">03. KEY FEATURES</h2>
+                    <p class="case-study-text">
+                        <strong>Live Coding Session Monitoring</strong>: Real-time time tracking and activity logging.<br><br>
+                        <strong>Visual Workflow Rhythm Analysis</strong>: Gain insights from daily and weekly heatmaps.<br><br>
+                        <strong>Project-Level Metrics</strong>: Detailed breakdown and productivity scoring.<br><br>
+                        <strong>Customizable Dashboard</strong>: Telemetry interface with drag-and-drop widgets.
+                    </p>
+                </section>
 
-            <article class="project-detail-card">
-                <h3>Planned Enhancements</h3>
-                <ul class="project-detail-list">
-                    <li>IDE plugin integrations for VS Code and IntelliJ.</li>
-                    <li>AI-powered productivity insights and recommendations.</li>
-                    <li>Team collaboration dashboards with shared metrics.</li>
-                </ul>
-            </article>
-        </section>
+                <section id="section-enhancements" class="case-study-section">
+                    <h2 class="case-study-section-header">04. ENHANCEMENTS</h2>
+                    <p class="case-study-text">
+                        <strong>IDE Plugin Integrations</strong>: Extending support to VS Code and IntelliJ.<br><br>
+                        <strong>AI-Powered Insights</strong>: Automated productivity recommendations and workflow analysis.<br><br>
+                        <strong>Team Collaboration</strong>: Shared metrics and collaboration dashboards for teams.
+                    </p>
+                </section>
+            </div>
+
+            <aside class="case-study-nav-container">
+                <nav class="case-study-nav">
+                    <a href="#section-overview" class="case-study-nav-item active">Overview</a>
+                    <a href="#section-preview" class="case-study-nav-item">Preview</a>
+                    <a href="#section-features" class="case-study-nav-item">Key Features</a>
+                    <a href="#section-enhancements" class="case-study-nav-item">Enhancements</a>
+                </nav>
+            </aside>
+        </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.case-study-section');
+            const navItems = document.querySelectorAll('.case-study-nav-item');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 300)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                if (current) {
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === `#${current}`) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

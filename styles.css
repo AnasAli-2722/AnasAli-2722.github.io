@@ -2590,3 +2590,124 @@ html.light .carousel-btn { background: var(--bg-secondary); border-color: var(--
         width: 76px;
     }
 }
+
+/* UX Case Study Layout */
+.case-study-layout {
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    padding: 60px 40px;
+    gap: 60px;
+}
+
+.case-study-content {
+    flex: 1;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.case-study-section {
+    text-align: center;
+    scroll-margin-top: 100px; /* For anchor links */
+}
+
+.case-study-section-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    color: var(--text-main);
+}
+
+.case-study-section-header::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--text-muted);
+}
+
+.case-study-subheader {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-main);
+}
+
+.case-study-text {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.case-study-text strong {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.case-study-nav-container {
+    width: 200px;
+    flex-shrink: 0;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .case-study-nav-container {
+        display: block;
+    }
+}
+
+.case-study-nav {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: right;
+    padding-right: 16px;
+}
+
+.case-study-nav-item {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-right: 12px;
+}
+
+.case-study-nav-item:hover {
+    color: var(--text-main);
+}
+
+.case-study-nav-item.active {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.case-study-nav-item.active::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 16px;
+    background-color: #8b5cf6;
+    border-radius: 2px;
+}
+
+html.light .case-study-nav-item.active::after {
+    background-color: #7c3aed;
+}
