@@ -195,8 +195,8 @@ body {
 .user-image-container:hover .user-image-placeholder {
     transform: translate3d(var(--bubble-shift-x, 0px), var(--bubble-shift-y, -6px), 0) scale(1.03);
     box-shadow: 0 0 0 1px var(--primary-accent), 26px 26px 58px rgba(0, 0, 0, 0.58), -12px -12px 28px rgba(0, 0, 0, 0.24);
-    animation: blobMorphActive 2.2s linear infinite, float-subtle 4.5s ease-in-out infinite;
-    transition: transform 0.14s linear, border-radius 0.14s linear, background-position 0.12s linear, box-shadow 0.25s ease;
+    animation: blobMorphActive 7.3s ease-in-out infinite, float-subtle 4.5s ease-in-out infinite;
+    transition: transform 0.45s ease-in-out, border-radius 0.45s ease-in-out, background-position 0.45s ease-in-out, box-shadow 0.45s ease-in-out;
 }
 
 .user-image-container:hover .bubble-name {
